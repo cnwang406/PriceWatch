@@ -8,14 +8,44 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var service = Service.shared
+    @ObservedObject var dm = CurrencyModel()
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        
+        ZStack{
+            if dm.loading {
+                VStack{
+                        Text("Loading")
+                    ProgressView()
+                        .scaleEffect(3.0)
+                }
+            }
+            NavigationStack{
+                    
+                List(dm.currencies){data in
+                    HStack{
+                        Text(data.date)
+                        Text(data.usdNtd)
+                        
+                    }
+                    
+                }
+                Spacer()
+                    .navigationTitle(Text("Currency"))
+            }
+            
+            
         }
+            
+        
         .padding()
+        .task {
+            await dm.reload()
+        }
+        .refreshable {
+            await dm.reload()
+        }
+            
     }
 }
 

@@ -11,6 +11,11 @@
 		2725CEF02A1383660003E02E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2725CEEF2A1383660003E02E /* ContentView.swift */; };
 		2725CEF22A1383670003E02E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2725CEF12A1383670003E02E /* Assets.xcassets */; };
 		2725CEF52A1383670003E02E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2725CEF42A1383670003E02E /* Preview Assets.xcassets */; };
+		2725CEFD2A138BA80003E02E /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 2725CEFC2A138BA80003E02E /* SwiftSoup */; };
+		2725CEFF2A1494310003E02E /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2725CEFE2A1494310003E02E /* DataModel.swift */; };
+		2725CF012A1494780003E02E /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2725CF002A1494780003E02E /* Service.swift */; };
+		2725CF042A1495360003E02E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2725CF032A1495360003E02E /* Constant.swift */; };
+		2725CF062A1495CD0003E02E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2725CF052A1495CD0003E02E /* Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		2725CEEF2A1383660003E02E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2725CEF12A1383670003E02E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2725CEF42A1383670003E02E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2725CEFE2A1494310003E02E /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		2725CF002A1494780003E02E /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		2725CF022A1494E10003E02E /* PriceWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PriceWatch.entitlements; sourceTree = "<group>"; };
+		2725CF032A1495360003E02E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		2725CF052A1495CD0003E02E /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2725CEFD2A138BA80003E02E /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,10 +62,15 @@
 		2725CEEC2A1383660003E02E /* PriceWatch */ = {
 			isa = PBXGroup;
 			children = (
+				2725CF022A1494E10003E02E /* PriceWatch.entitlements */,
+				2725CF032A1495360003E02E /* Constant.swift */,
 				2725CEED2A1383660003E02E /* PriceWatchApp.swift */,
 				2725CEEF2A1383660003E02E /* ContentView.swift */,
+				2725CF002A1494780003E02E /* Service.swift */,
+				2725CEFE2A1494310003E02E /* DataModel.swift */,
 				2725CEF12A1383670003E02E /* Assets.xcassets */,
 				2725CEF32A1383670003E02E /* Preview Content */,
+				2725CF052A1495CD0003E02E /* Util.swift */,
 			);
 			path = PriceWatch;
 			sourceTree = "<group>";
@@ -83,6 +99,9 @@
 			dependencies = (
 			);
 			name = PriceWatch;
+			packageProductDependencies = (
+				2725CEFC2A138BA80003E02E /* SwiftSoup */,
+			);
 			productName = PriceWatch;
 			productReference = 2725CEEA2A1383660003E02E /* PriceWatch.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +130,9 @@
 				Base,
 			);
 			mainGroup = 2725CEE12A1383660003E02E;
+			packageReferences = (
+				2725CEFB2A138BA80003E02E /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+			);
 			productRefGroup = 2725CEEB2A1383660003E02E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,7 +160,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2725CEF02A1383660003E02E /* ContentView.swift in Sources */,
+				2725CF062A1495CD0003E02E /* Util.swift in Sources */,
+				2725CF012A1494780003E02E /* Service.swift in Sources */,
+				2725CF042A1495360003E02E /* Constant.swift in Sources */,
 				2725CEEE2A1383660003E02E /* PriceWatchApp.swift in Sources */,
+				2725CEFF2A1494310003E02E /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +290,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PriceWatch/PriceWatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PriceWatch/Preview Content\"";
@@ -275,6 +302,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -293,6 +321,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PriceWatch/PriceWatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PriceWatch/Preview Content\"";
@@ -304,6 +333,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -339,6 +369,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2725CEFB2A138BA80003E02E /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 2.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2725CEFC2A138BA80003E02E /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2725CEFB2A138BA80003E02E /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2725CEE22A1383660003E02E /* Project object */;
 }
