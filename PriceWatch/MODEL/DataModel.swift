@@ -28,22 +28,44 @@ struct CurrencyElement: Identifiable, Codable {
 
 typealias Currency = [CurrencyElement]
 
+struct RealTimeCurrencyElement: Identifiable, Codable {
+    let id = UUID()
+    let exrate: Double
+    let utc: String
+
+    enum CodingKeys: String, CodingKey {
+        case exrate = "Exrate"
+        case utc = "UTC"
+    }
+}
+
+typealias RTCurrency = [String: RealTimeCurrencyElement]
+
+@MainActor
 class CurrencyModel: ObservableObject {
+    static  var share = CurrencyModel()
     @Published var currencies: [CurrencyElement] = []
+    @Published var rtCurrencies =  RTCurrency()
     @Published var loading : Bool = false
     
     func reload() async {
         self.loading = true
         let url = URL(string: "https://openapi.taifex.com.tw/v1/DailyForeignExchangeRates")!
+        let url2 = URL(string: "https://tw.rter.info/capi.php")!
         let urlSession = URLSession.shared
         do {
-            let (data, response) = try! await urlSession.data(from: url)
+            let (data, _) = try! await urlSession.data(from: url)
             self.currencies = try JSONDecoder().decode([CurrencyElement].self, from: data).reversed()
+            let (data2, _) = try! await urlSession.data(from:url2)
+            print (data2)
+            self.rtCurrencies = try JSONDecoder().decode(RTCurrency.self, from: data2)
             self.loading = false
         } catch {
             print ("Error loading ")
             self.loading = false
         }
+        
+        
         
     }
     

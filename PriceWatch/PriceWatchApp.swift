@@ -11,7 +11,7 @@ import SwiftUI
 struct PriceWatchApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }
