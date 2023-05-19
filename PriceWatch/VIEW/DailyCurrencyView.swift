@@ -30,6 +30,8 @@ struct DailyCurrencyView: View {
                     
                 }
                 Spacer()
+                Text("Latest update \(Date(timeIntervalSince1970: vm.dm.latestUpdate))")
+                
                     .navigationTitle(Text("Currency"))
             }
         }
