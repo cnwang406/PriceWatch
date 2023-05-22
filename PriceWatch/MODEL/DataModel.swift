@@ -41,9 +41,41 @@ struct RealTimeCurrencyElement: Identifiable, Codable {
 
 typealias RTCurrency = [String: RealTimeCurrencyElement]
 
+struct APILayerCurrency: Identifiable, Codable, Hashable {
+    var id = UUID()
+    let success: Bool
+    let timestamp: Int
+    let base, date: String
+    let rates: [String: Double]
+    
+}
+
+
+
 enum DataType: String {
     case realtime
     case daily
+    
+}
+
+enum Dollars: String, CaseIterable  {
+    case TWD = "TWD"
+    case USD = "USD"
+    case JPY = "JPY"
+    case EUR = "EUR"
+    case AUD = "AUD"
+    case GBP = "GBP"
+    case ARS = "ARS"
+    case ZAR = "ZAR"
+    case CNY = "CNY"
+    
+}
+
+struct MyCurrencyModel: Identifiable {
+    let id = UUID()
+    let timestamp: Double
+    let name: Dollars
+    let rate: Double
 }
 
 
@@ -52,12 +84,15 @@ class CurrencyModel: ObservableObject {
     static  var share = CurrencyModel()
     @Published var currencies: [CurrencyElement] = []
     @Published var rtCurrencies =  RTCurrency()
+    @Published var apiCurrencies = APILayerCurrency(success: false, timestamp: 0, base: "TWD", date: "1972-12-19", rates: ["USD": 0.0])
     @Published var loading : Bool = false
     @Published var latestUpdate: Double = Date().timeIntervalSince1970
+    @Published var currency: [MyCurrencyModel] = []
     func reload(fetchType: DataType) async {
         self.loading = true
         let url = URL(string: "https://openapi.taifex.com.tw/v1/DailyForeignExchangeRates")!
         let url2 = URL(string: "https://tw.rter.info/capi.php")!
+        let url3 = URL(string: apiLayerURL + "?base=TWD&symbols=CNY,EUR")!
         let urlSession = URLSession.shared
         do {
             if fetchType == .daily {
@@ -75,9 +110,34 @@ class CurrencyModel: ObservableObject {
             print ("Error loading ")
             self.loading = false
         }
+        parse()
+    }
+    
+    func parse(){
+        
+        // get USDTWD
+        currency = []
+        print ("USDTWD")
+        print (rtCurrencies["USDTWD"]?.utc.formDateFromUTC().timeIntervalSince1970 ?? 0.0)
+        print (rtCurrencies["USDTWD"]?.exrate ?? 1.0)
+        let usdToTwd = rtCurrencies["USDTWD"]?.exrate ?? 1.0
+        var newCurrency = MyCurrencyModel(timestamp: rtCurrencies["USDTWD"]?.utc.formDateFromUTC().timeIntervalSince1970 ?? 0.0, name: Dollars(rawValue: "USDTWD") ?? .TWD, rate: rtCurrencies["USDTWD"]?.exrate ?? 0.0)
+        currency.append(newCurrency)
+        
+        // enumerate others, convert to TWD
+        for dollar in Dollars.allCases{
+            print ("USD\(dollar.rawValue)")
+            let xname = "USD" + dollar.rawValue
+            let newCurrency = MyCurrencyModel(timestamp: rtCurrencies[xname]?.utc.formDateFromUTC().timeIntervalSince1970 ?? 0.0, name: dollar, rate: (rtCurrencies[xname]?.exrate ?? 0.0) / usdToTwd)
+            
+            currency.append(newCurrency)
+    
+        }
+        
         
         
         
     }
+    
     
 }

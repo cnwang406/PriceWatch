@@ -11,20 +11,23 @@ import SwiftUI
 class RealTimeCurrencyViewModel: ObservableObject {
     var dm = CurrencyModel.share
     @Published var currencies = RTCurrency()
+    @Published var apiCurrencies = APILayerCurrency(success: false, timestamp: 0, base: "TWD", date: "1972-12-19", rates: ["USD": 0.0])
     @Published var loading: Bool = false
     @Published var latestDataTime: String = ""
+    @Published var currency : [MyCurrencyModel] = []
+    
     func reload() async{
         loading = true
         await dm.reload(fetchType: .realtime)
         self.currencies = dm.rtCurrencies
+        self.apiCurrencies = dm.apiCurrencies
+        self.currency = dm.currency
+
+        
+        let date = (self.currencies["USDTWD"]?.utc ?? "1972-12-19 19:30:00").formDateFromUTC()
+        
+        self.latestDataTime = date.toString(timezone: "ASIA/TAIPEI")
         loading = false
-        let date = Date().fromUTCString(utcString: self.currencies["USDTWD"]?.utc ?? "--")
-        // Create Date Formatter
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
-        dateFormatter.timeZone = TimeZone(identifier: "Asia/Taipei")
-        // Convert Date to String
-        self.latestDataTime = dateFormatter.string(from: date)
         
     }
 }
