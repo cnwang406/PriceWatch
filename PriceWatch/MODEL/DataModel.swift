@@ -76,6 +76,7 @@ struct MyCurrencyModel: Identifiable {
     let timestamp: Double
     let name: Dollars
     let rate: Double
+    let vaildate: Bool
 }
 
 
@@ -116,19 +117,26 @@ class CurrencyModel: ObservableObject {
     func parse(){
         
         // get USDTWD
+        print (rtCurrencies["USDJPY"])
         currency = []
         print ("USDTWD")
         print (rtCurrencies["USDTWD"]?.utc.formDateFromUTC().timeIntervalSince1970 ?? 0.0)
         print (rtCurrencies["USDTWD"]?.exrate ?? 1.0)
         let usdToTwd = rtCurrencies["USDTWD"]?.exrate ?? 1.0
-        var newCurrency = MyCurrencyModel(timestamp: rtCurrencies["USDTWD"]?.utc.formDateFromUTC().timeIntervalSince1970 ?? 0.0, name: Dollars(rawValue: "USDTWD") ?? .TWD, rate: rtCurrencies["USDTWD"]?.exrate ?? 0.0)
+        let rate = rtCurrencies["USDTWD"]?.exrate ?? 0.0
+        let vaildate =  (rate != 0.0)  && (usdToTwd != 0.0)
+        var newCurrency = MyCurrencyModel(timestamp: rtCurrencies["USDTWD"]?.utc.formDateFromUTC().timeIntervalSince1970 ?? 0.0, name: Dollars(rawValue: "USDTWD") ?? .TWD, rate: rate , vaildate: (rate != 0.0)  && (usdToTwd != 0.0))
         currency.append(newCurrency)
         
         // enumerate others, convert to TWD
         for dollar in Dollars.allCases{
-            print ("USD\(dollar.rawValue)")
+            
             let xname = "USD" + dollar.rawValue
-            let newCurrency = MyCurrencyModel(timestamp: rtCurrencies[xname]?.utc.formDateFromUTC().timeIntervalSince1970 ?? 0.0, name: dollar, rate: (rtCurrencies[xname]?.exrate ?? 0.0) / usdToTwd)
+            let rate = rtCurrencies[xname]?.exrate ?? 0.0
+            let validate = (rate != 0.0)  && (usdToTwd != 0.0)
+            let xrate = validate ?  rate / usdToTwd : 0.0
+            print ("\(xname), rate = \(rate), validate = \(vaildate ? "T" : "F"), xrate = \(xrate) ")
+            let newCurrency = MyCurrencyModel(timestamp: rtCurrencies[xname]?.utc.formDateFromUTC().timeIntervalSince1970 ?? 0.0, name: dollar, rate:xrate, vaildate: validate)
             
             currency.append(newCurrency)
     
