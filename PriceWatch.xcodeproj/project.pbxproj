@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2724DA4E2A1F52E900A9E1D7 /* RTCurrencyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2724DA4D2A1F52E900A9E1D7 /* RTCurrencyItemView.swift */; };
 		2725CEEE2A1383660003E02E /* PriceWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2725CEED2A1383660003E02E /* PriceWatchApp.swift */; };
 		2725CEF02A1383660003E02E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2725CEEF2A1383660003E02E /* MainView.swift */; };
 		2725CEF22A1383670003E02E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2725CEF12A1383670003E02E /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2724DA4D2A1F52E900A9E1D7 /* RTCurrencyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTCurrencyItemView.swift; sourceTree = "<group>"; };
 		2725CEEA2A1383660003E02E /* PriceWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PriceWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2725CEED2A1383660003E02E /* PriceWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceWatchApp.swift; sourceTree = "<group>"; };
 		2725CEEF2A1383660003E02E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				2725CEEF2A1383660003E02E /* MainView.swift */,
 				27DB69732A15DE00009BD4D1 /* DailyCurrencyView.swift */,
 				27DB69712A15AC19009BD4D1 /* RealTimeCurrencyView.swift */,
+				2724DA4D2A1F52E900A9E1D7 /* RTCurrencyItemView.swift */,
 			);
 			path = VIEW;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2724DA4E2A1F52E900A9E1D7 /* RTCurrencyItemView.swift in Sources */,
 				27DB69722A15AC19009BD4D1 /* RealTimeCurrencyView.swift in Sources */,
 				27DB697F2A178AB5009BD4D1 /* Date+Extension.swift in Sources */,
 				2725CEF02A1383660003E02E /* MainView.swift in Sources */,
