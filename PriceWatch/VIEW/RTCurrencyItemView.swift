@@ -16,6 +16,7 @@ struct RTCurrencyItemView: View {
         HStack(alignment: .center){
             Text("\(cur.name.rawValue)")
                 .multilineTextAlignment(.leading)
+                .foregroundColor(cur.baseDollar ? .blue : .primary)
                 .frame(width:40)
                 
 //            Spacer()
@@ -51,6 +52,8 @@ struct RTCurrencyItemView_Previews: PreviewProvider {
             RTCurrencyItemView(cur: MyCurrencyModel(timestamp: Date().timeIntervalSince1970, name: Dollars(rawValue: "USD")!, rate: 30.0, vaildate: true),editable: false)
                 .padding()
             RTCurrencyItemView(cur: MyCurrencyModel(timestamp: Date().timeIntervalSince1970, name: Dollars(rawValue: "USD")!, rate: 30.0, vaildate: false),editable: false)
+                .padding()
+            RTCurrencyItemView(cur: MyCurrencyModel(timestamp: Date().timeIntervalSince1970, name: Dollars(rawValue: "TWD")!, rate: 30.0, vaildate: true, baseDollar: true),editable: false)
                 .padding()
         }
     }

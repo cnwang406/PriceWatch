@@ -15,6 +15,7 @@ class RealTimeCurrencyViewModel: ObservableObject {
     @Published var loading: Bool = false
     @Published var latestDataTime: String = ""
     @Published var currency : [MyCurrencyModel] = []
+    @Published var basedDollar: Dollars = .TWD
     
     func reload() async{
         loading = true
@@ -29,5 +30,28 @@ class RealTimeCurrencyViewModel: ObservableObject {
         self.latestDataTime = date.toString(timezone: "ASIA/TAIPEI")
         loading = false
         
+    }
+    
+    func edit( CheckCurrency:  MyCurrencyModel) {
+        let name = CheckCurrency.name.rawValue
+        basedDollar = CheckCurrency.name
+        for  idx in self.currency.indices {
+            if currency[idx].name.rawValue == name {
+                print ("Enable \(currency[idx].name.rawValue)")
+                currency[idx].editable.toggle()
+                currency[idx].baseDollar.toggle()
+            } else {
+                print ("disable \(currency[idx].name.rawValue)")
+                currency[idx].editable = false
+                currency[idx].baseDollar = false
+            }
+        }
+        
+    }
+    
+    func dump(){
+        for i in currency {
+            print ("\(i.name.rawValue) e:\(i.editable ? "T" :"F"), b:\(i.baseDollar ? "T" : "F")")
+        }
     }
 }

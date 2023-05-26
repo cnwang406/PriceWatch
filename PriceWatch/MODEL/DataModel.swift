@@ -77,6 +77,9 @@ struct MyCurrencyModel: Identifiable {
     let name: Dollars
     let rate: Double
     let vaildate: Bool
+    var baseDollar:Bool = false
+    var editable: Bool = false
+    
 }
 
 
@@ -139,7 +142,8 @@ class CurrencyModel: ObservableObject {
             let validate = (rate != 0.0)  && (usdToTwd != 0.0)
             let xrate = validate ?  baseDollar / rate : 0.0
             print ("\(xname), rate = \(rate), validate = \(vaildate ? "T" : "F"), xrate = \(xrate) ")
-            let newCurrency = MyCurrencyModel(timestamp: rtCurrencies[xname]?.utc.formDateFromUTC().timeIntervalSince1970 ?? 0.0, name: dollar, rate:xrate, vaildate: validate)
+            let baseDollar = dollar.rawValue == "TWD"
+            let newCurrency = MyCurrencyModel(timestamp: rtCurrencies[xname]?.utc.formDateFromUTC().timeIntervalSince1970 ?? 0.0, name: dollar, rate:xrate, vaildate: validate, baseDollar: baseDollar)
             
             currency.append(newCurrency)
     
