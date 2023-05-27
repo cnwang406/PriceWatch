@@ -9,8 +9,11 @@ import SwiftUI
 
 struct RTCurrencyItemView: View {
     //MARK: - PROPERTIES
+//    var baseMoney: Double
     var cur: MyCurrencyModel
     var editable: Bool
+    @State var enteredMoney: Double = 0.0
+    @State var enteredMoneyStr: String = "1.0"
     //MARK: - VIEW
     var body: some View {
         HStack(alignment: .center){
@@ -26,20 +29,29 @@ struct RTCurrencyItemView: View {
                 .scaledToFit()
                 .frame(width: 30)
                 .padding(.trailing,20)
-            Text(" \(cur.rate.formatted(.currency(code: "TWD").rounded(rule: .awayFromZero, increment: 0.001)))")
-                .foregroundColor(editable ? .green : (cur.vaildate ? .primary : .gray.opacity(0.5)))
+
+                
+                Text(" \(cur.money.formatted(.currency(code: "TWD").rounded(rule: .awayFromZero, increment: 0.001)))")
+                    .foregroundColor(editable ? .green : (cur.vaildate ? .primary : .gray.opacity(0.5)))
+                
+                    .multilineTextAlignment(.trailing)
+                    .padding(.trailing,20)
             
-                .multilineTextAlignment(.trailing)
-                .padding(.trailing,20)
                 
             Text("\(Date(timeIntervalSince1970: cur.timestamp).formatted(.dateTime.locale(Locale(identifier: "US"))))")
-                .font(.footnote)
+                .font(.system(size: 8))
                 .fontWeight(.light)
                 .opacity(0.3)
-                .frame(width: 70)
+                .frame(width: 45)
                 
         }
+        .onAppear(){
+//            cur.money = cur.rate
+            self.enteredMoney = cur.rate
+            self.enteredMoneyStr = String(self.enteredMoney)
+        }
     }
+    
 }
 
 

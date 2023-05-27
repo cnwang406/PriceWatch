@@ -79,6 +79,7 @@ struct MyCurrencyModel: Identifiable {
     let vaildate: Bool
     var baseDollar:Bool = false
     var editable: Bool = false
+    var money: Double = 0.0
     
 }
 
@@ -93,6 +94,7 @@ class CurrencyModel: ObservableObject {
     @Published var latestUpdate: Double = Date().timeIntervalSince1970
     @Published var currency: [MyCurrencyModel] = []
     @Published var baseCurrency = Dollars(rawValue: "TWD")
+    @Published var baseMoney : Double = 1.0
     func reload(fetchType: DataType) async {
         self.loading = true
         let url = URL(string: "https://openapi.taifex.com.tw/v1/DailyForeignExchangeRates")!
@@ -125,33 +127,30 @@ class CurrencyModel: ObservableObject {
         currency = []
 //        print ("USDTWD")
         print (rtCurrencies["USDTWD"]?.utc.formDateFromUTC().timeIntervalSince1970 ?? 0.0)
-        print (rtCurrencies["USDTWD"]?.exrate ?? 1.0)
+        print (rtCurrencies["USDTWD"]?.exrate ?? baseMoney)
         let usdToTwd = rtCurrencies["USDTWD"]?.exrate ?? 1.0
-        let baseDollar = rtCurrencies["USD\(baseCurrency?.rawValue ?? "TWD")"]?.exrate ?? 1.0
+        let baseDollar = rtCurrencies["USD\(baseCurrency?.rawValue ?? "TWD")"]?.exrate ?? baseMoney
         let rate = rtCurrencies["USDTWD"]?.exrate ?? 0.0
         let vaildate =  (rate != 0.0)  && (usdToTwd != 0.0)
-//        var newCurrency = MyCurrencyModel(timestamp: rtCurrencies["USDTWD"]?.utc.formDateFromUTC().timeIntervalSince1970 ?? 0.0, name: Dollars(rawValue: "USDTWD") ?? .TWD, rate: rate , vaildate: (rate != 0.0)  && (usdToTwd != 0.0))
-        
-        
-        
-        // enumerate others, convert to TWD
+
         for dollar in Dollars.allCases{
             
             let xname = "USD" + dollar.rawValue
             let rate = rtCurrencies[xname]?.exrate ?? 0.0
             let validate = (rate != 0.0)  && (usdToTwd != 0.0)
             let xrate = validate ?  baseDollar / rate : 0.0
-            print ("\(xname), rate = \(rate), validate = \(vaildate ? "T" : "F"), xrate = \(xrate) ")
+            let money = validate ? xrate * baseMoney : 0.0
+//            print ("\(xname), rate = \(rate), validate = \(vaildate ? "T" : "F"), xrate = \(xrate) ")
             let baseDollar = dollar.rawValue == "TWD"
-            let newCurrency = MyCurrencyModel(timestamp: rtCurrencies[xname]?.utc.formDateFromUTC().timeIntervalSince1970 ?? 0.0, name: dollar, rate:xrate, vaildate: validate, baseDollar: baseDollar)
+            let newCurrency = MyCurrencyModel(timestamp: rtCurrencies[xname]?.utc.formDateFromUTC().timeIntervalSince1970 ?? 0.0, name: dollar, rate:xrate, vaildate: validate, baseDollar: baseDollar,  money: money)
             
             currency.append(newCurrency)
     
         }
-        
-        
-        
-        
+    }
+    
+    func resetBaseMoney() {
+        self.baseMoney = 1.0
     }
     
     

@@ -16,14 +16,13 @@ class RealTimeCurrencyViewModel: ObservableObject {
     @Published var latestDataTime: String = ""
     @Published var currency : [MyCurrencyModel] = []
     @Published var basedDollar: Dollars = .TWD
-    
+//    @Published var moneyEntered: Double = 1.0
     func reload() async{
         loading = true
         await dm.reload(fetchType: .realtime)
         self.currencies = dm.rtCurrencies
         self.apiCurrencies = dm.apiCurrencies
         self.currency = dm.currency
-
         
         let date = (self.currencies["USDTWD"]?.utc ?? "1972-12-19 19:30:00").formDateFromUTC()
         
@@ -38,8 +37,8 @@ class RealTimeCurrencyViewModel: ObservableObject {
         for  idx in self.currency.indices {
             if currency[idx].name.rawValue == name {
                 print ("Enable \(currency[idx].name.rawValue)")
-                currency[idx].editable.toggle()
-                currency[idx].baseDollar.toggle()
+                currency[idx].editable = true
+                currency[idx].baseDollar = true
             } else {
                 print ("disable \(currency[idx].name.rawValue)")
                 currency[idx].editable = false

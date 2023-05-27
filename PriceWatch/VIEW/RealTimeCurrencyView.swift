@@ -10,6 +10,8 @@ import SwiftUI
 struct RealTimeCurrencyView: View {
     //MARK: - PROPERTIES
     @StateObject var vm = RealTimeCurrencyViewModel()
+    @State var showInputView:Bool = false
+    @State var moneyInput: Double = 1.0
     var  currencyFormatter: NumberFormatter {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
@@ -43,7 +45,17 @@ struct RealTimeCurrencyView: View {
                     .padding(.horizontal,3)
                     .multilineTextAlignment(.leading)
                     .onTapGesture {
-                        vm.edit(CheckCurrency: cur)
+                        if vm.basedDollar == cur.name {
+                            print ("Edit")
+                            self.showInputView.toggle()
+                        } else {
+                            print ("basedollar to \(cur.name.rawValue)")
+                            vm.edit(CheckCurrency: cur)
+                        }
+                    }
+                    .onSubmit {
+                        print ("CurrecnyView submit \(cur.rate)")
+                        
                     }
                     
                 }
@@ -59,6 +71,17 @@ struct RealTimeCurrencyView: View {
             
             
         }
+        .sheet(isPresented: $showInputView, onDismiss: {
+            print ("new value : \(moneyInput)")
+            vm.dm.baseMoney = moneyInput
+            print ("vm.dm.baseMoney = \(vm.dm.baseMoney)")
+            vm.dm.parse()
+        }, content: {
+            
+            InputMoneyView(money: $moneyInput, showInputView: $showInputView)
+                .presentationDetents([.medium, .large])
+                .presentationDragIndicator(.hidden)
+        })
             
         .padding()
         .task {
