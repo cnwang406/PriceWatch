@@ -15,10 +15,19 @@ class RealTimeCurrencyViewModel: ObservableObject {
     @Published var loading: Bool = false
     @Published var latestDataTime: String = ""
     @Published var currency : [MyCurrencyModel] = []
-    @Published var basedDollar: Dollars = .TWD
+    
+//    @Published var basedDollar: Dollars = .TWD
+    @Published var basedDollar: Dollars?
+    @Published var baseMoney: Double = 1.0
+    @Published var baseRate : Double = 1.0
+    @Published var latestRealTimeUpdate: String = ""
 //    @Published var moneyEntered: Double = 1.0
     func reload() async{
         loading = true
+        if basedDollar == nil {
+            basedDollar = .TWD
+        }
+        dm.baseDollar = basedDollar!
         await dm.reload(fetchType: .realtime)
         self.currencies = dm.rtCurrencies
         self.apiCurrencies = dm.apiCurrencies
@@ -26,8 +35,10 @@ class RealTimeCurrencyViewModel: ObservableObject {
         
         let date = (self.currencies["USDTWD"]?.utc ?? "1972-12-19 19:30:00").formDateFromUTC()
         
-        self.latestDataTime = date.toString(timezone: "ASIA/TAIPEI")
+        self.latestRealTimeUpdate = date.toString(timezone: "ASIA/TAIPEI")
         loading = false
+        
+        calculate()
         
     }
     
@@ -38,19 +49,35 @@ class RealTimeCurrencyViewModel: ObservableObject {
             if currency[idx].name.rawValue == name {
                 print ("Enable \(currency[idx].name.rawValue)")
                 currency[idx].editable = true
-                currency[idx].baseDollar = true
+                currency[idx].isBaseDollar = true
             } else {
                 print ("disable \(currency[idx].name.rawValue)")
                 currency[idx].editable = false
-                currency[idx].baseDollar = false
+                currency[idx].isBaseDollar = false
             }
         }
-        
+//        calculate()
     }
     
     func dump(){
         for i in currency {
-            print ("\(i.name.rawValue) e:\(i.editable ? "T" :"F"), b:\(i.baseDollar ? "T" : "F")")
+            print ("\(i.name.rawValue) e:\(i.editable ? "T" :"F"), b:\(i.isBaseDollar ? "T" : "F")")
         }
+    }
+    func calculate(){
+        print ("Start to calculate")
+        if basedDollar == nil {
+            basedDollar = .TWD
+        }
+        print ("base dollar is \(basedDollar?.rawValue ?? "TWD")")
+        
+        print ("base money = \(baseMoney)")
+        for  idx in self.currency.indices {
+            
+            currency[idx].money =  baseRate / currency[idx].rate  * baseMoney
+            print ("\(currency[idx].name.rawValue), rate = \(currency[idx].rate) / \(baseRate) * \(baseMoney) = \(currency[idx].money)")
+        }
+        
+        
     }
 }

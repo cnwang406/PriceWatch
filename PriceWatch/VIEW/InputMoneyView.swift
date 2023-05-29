@@ -31,22 +31,33 @@ struct InputMoneyView: View {
                 .font(.title)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .background(.yellow)
+                .keyboardType(.default)
+                .submitLabel(.continue)
+                .onSubmit {
+                    print ("TextField data = \(money)")
+                }
                 .padding(40)
-                .keyboardType(.decimalPad)
-            
+
             Button("OK") {
-                
                 showInputView = false
             }
+            .font(.title)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 12.0)
+                        .stroke(style: StrokeStyle(lineWidth: 3.0))
+                        .foregroundColor(.blue)
+                        .frame(width: 140, height:60)
+                }
+            Spacer()
         }
     }
 }
 
 
 //MARK: - PREVIEW
-//struct InputMoneyView_Previews: PreviewProvider {
-//    @State var money: Double = 100.0
-//    static var previews: some View {
-//        InputMoneyView(money: .Const() )
-//    }
-//}
+struct InputMoneyView_Previews: PreviewProvider {
+    @State static  var money: Double = 100.0
+    static var previews: some View {
+        InputMoneyView(money: $money, showInputView: .constant(false))
+    }
+}

@@ -39,7 +39,7 @@ struct RealTimeCurrencyView: View {
             NavigationStack{
                     
 
-                Text("1 foriegn dollars = ? \(vm.basedDollar.rawValue)")
+                Text("1 \(vm.basedDollar?.rawValue ?? "TWD") = ?foriegn dollars ")
                 List (vm.currency) { cur in
                     RTCurrencyItemView(cur: cur, editable: false)
                     .padding(.horizontal,3)
@@ -50,11 +50,14 @@ struct RealTimeCurrencyView: View {
                             self.showInputView.toggle()
                         } else {
                             print ("basedollar to \(cur.name.rawValue)")
+                            vm.basedDollar = cur.name
+                            vm.baseRate = cur.rate
                             vm.edit(CheckCurrency: cur)
                         }
                     }
                     .onSubmit {
                         print ("CurrecnyView submit \(cur.rate)")
+                        
                         
                     }
                     
@@ -63,7 +66,10 @@ struct RealTimeCurrencyView: View {
                 
                 Spacer()
                 Text("Latest update \(Date(timeIntervalSince1970: vm.dm.latestUpdate))")
+                    .font(.footnote).opacity(0.3)
+                    
                     .navigationTitle(Text("RealTime Xchg(\(vm.dm.rtCurrencies.count))"))
+
                     .onTapGesture {
                         vm.dump()
                     }
@@ -72,10 +78,12 @@ struct RealTimeCurrencyView: View {
             
         }
         .sheet(isPresented: $showInputView, onDismiss: {
-            print ("new value : \(moneyInput)")
-            vm.dm.baseMoney = moneyInput
-            print ("vm.dm.baseMoney = \(vm.dm.baseMoney)")
-            vm.dm.parse()
+            print ("new value : \(moneyInput) for \(vm.basedDollar)")
+            vm.baseMoney = moneyInput
+//            vm.dm.baseMoney = moneyInput
+//            print ("vm.dm.baseMoney = \(vm.dm.baseMoney)")
+//            vm.dm.parse()
+            vm.calculate()
         }, content: {
             
             InputMoneyView(money: $moneyInput, showInputView: $showInputView)

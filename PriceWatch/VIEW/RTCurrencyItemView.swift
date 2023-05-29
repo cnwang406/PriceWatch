@@ -19,7 +19,7 @@ struct RTCurrencyItemView: View {
         HStack(alignment: .center){
             Text("\(cur.name.rawValue)")
                 .multilineTextAlignment(.leading)
-                .foregroundColor(cur.baseDollar ? .blue : .primary)
+                .foregroundColor(cur.isBaseDollar ? .blue : .primary)
                 .frame(width:40)
                 
 //            Spacer()
@@ -30,21 +30,22 @@ struct RTCurrencyItemView: View {
                 .frame(width: 30)
                 .padding(.trailing,20)
 
-                
-                Text(" \(cur.money.formatted(.currency(code: "TWD").rounded(rule: .awayFromZero, increment: 0.001)))")
+            Spacer()
+            Text(" \(cur.money.formatted(.currency(code: cur.name.rawValue).rounded(rule: .awayFromZero, increment: 0.001)))")
                     .foregroundColor(editable ? .green : (cur.vaildate ? .primary : .gray.opacity(0.5)))
-                
+                    .font(.title)
                     .multilineTextAlignment(.trailing)
                     .padding(.trailing,20)
             
                 
-            Text("\(Date(timeIntervalSince1970: cur.timestamp).formatted(.dateTime.locale(Locale(identifier: "US"))))")
-                .font(.system(size: 8))
-                .fontWeight(.light)
-                .opacity(0.3)
-                .frame(width: 45)
+//            Text("\(Date(timeIntervalSince1970: cur.timestamp).formatted(.dateTime.locale(Locale(identifier: "US"))))")
+//                .font(.system(size: 8))
+//                .fontWeight(.light)
+//                .opacity(0.3)
+//                .frame(width: 45)
                 
         }
+        .padding(.vertical,20)
         .onAppear(){
 //            cur.money = cur.rate
             self.enteredMoney = cur.rate
@@ -59,13 +60,13 @@ struct RTCurrencyItemView: View {
 struct RTCurrencyItemView_Previews: PreviewProvider {
     static var previews: some View {
         GroupBox{
-            RTCurrencyItemView(cur: MyCurrencyModel(timestamp: Date().timeIntervalSince1970, name: Dollars(rawValue: "USD")!, rate: 30.0, vaildate: true),editable: true)
+            RTCurrencyItemView(cur: MyCurrencyModel(timestamp: Date().timeIntervalSince1970, name: Dollars(rawValue: "USD")!, rate: 30.0, vaildate: true, isBaseDollar: false),editable: true)
                 .padding()
-            RTCurrencyItemView(cur: MyCurrencyModel(timestamp: Date().timeIntervalSince1970, name: Dollars(rawValue: "USD")!, rate: 30.0, vaildate: true),editable: false)
+            RTCurrencyItemView(cur: MyCurrencyModel(timestamp: Date().timeIntervalSince1970, name: Dollars(rawValue: "USD")!, rate: 30.0, vaildate: true, isBaseDollar: false),editable: false)
                 .padding()
-            RTCurrencyItemView(cur: MyCurrencyModel(timestamp: Date().timeIntervalSince1970, name: Dollars(rawValue: "USD")!, rate: 30.0, vaildate: false),editable: false)
+            RTCurrencyItemView(cur: MyCurrencyModel(timestamp: Date().timeIntervalSince1970, name: Dollars(rawValue: "USD")!, rate: 30.0, vaildate: false, isBaseDollar: false),editable: false)
                 .padding()
-            RTCurrencyItemView(cur: MyCurrencyModel(timestamp: Date().timeIntervalSince1970, name: Dollars(rawValue: "TWD")!, rate: 30.0, vaildate: true, baseDollar: true),editable: false)
+            RTCurrencyItemView(cur: MyCurrencyModel(timestamp: Date().timeIntervalSince1970, name: Dollars(rawValue: "TWD")!, rate: 30.0, vaildate: true, isBaseDollar: true),editable: false)
                 .padding()
         }
     }
