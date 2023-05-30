@@ -13,13 +13,13 @@ struct MainView: View {
    
         TabView(){
             
-            DailyCurrencyView()
-                .tabItem{
-                    Text("Daily")}
             RealTimeCurrencyView()
                 .tabItem {
                     Text("RealTime")
                 }
+            DailyCurrencyView()
+                .tabItem{
+                    Text("Daily")}
         }
         
             

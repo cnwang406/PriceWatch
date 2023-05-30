@@ -129,7 +129,7 @@ class CurrencyModel: ObservableObject {
 
         let usdToTwd = rtCurrencies["USDTWD"]?.exrate ?? 1.0
 //        var baseDollarRate = 1.0
-        var baseDollarRate = rtCurrencies["USD\(baseDollar.rawValue)"]?.exrate ?? 1.0
+        let baseDollarRate = rtCurrencies["USD\(baseDollar.rawValue)"]?.exrate ?? 1.0
         
         
         

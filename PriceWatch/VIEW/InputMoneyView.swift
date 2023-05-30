@@ -9,9 +9,13 @@ import SwiftUI
 
 struct InputMoneyView: View {
     //MARK: - PROPERTIES
+    @StateObject var dm = CurrencyModel.share
     @State var moneyEnteredStr: String = "1.0"
     @Binding var money : Double
+    @State var moneyS: String = "1.0"
     @Binding var showInputView:Bool
+    
+    
     private var numberFormatter: NumberFormatter{
         let nf = NumberFormatter()
 //        numberFormatter = NumberFormatter()
@@ -21,34 +25,75 @@ struct InputMoneyView: View {
       }
   //MARK:
     
-        
+    enum FocusedField {
+        case dec
+    }
+    @FocusState var focusedField : FocusedField?
     
     var body: some View {
         VStack{
-            
-            TextField(moneyEnteredStr, value: $money, formatter: numberFormatter)
+            HStack{
+                
+                Text("Input $$ in \(dm.baseDollar.rawValue))")
+                Image(dm.baseDollar.rawValue)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30)
+                    .padding(.trailing,20)
+                    
+            }
+                .font(.title)
+                .foregroundColor(.primary)
+                .padding()
+//            TextField(moneyEnteredStr, value: $money, formatter: numberFormatter)
+            TextField(moneyEnteredStr, text: $moneyS)
                 .multilineTextAlignment(.trailing)
                 .font(.title)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                .focused($focusedField, equals: .dec)
                 .background(.yellow)
-                .keyboardType(.default)
-                .submitLabel(.continue)
-                .onSubmit {
-                    print ("TextField data = \(money)")
+                .keyboardType(.decimalPad)
+                .onTapGesture {
+                    moneyS="1"
+                    money=1.0
                 }
+                .numbersOnly($moneyS, includeDecimal: true)
+                .padding(.horizontal,40)
                 .padding(40)
 
             Button("OK") {
                 showInputView = false
+                money = Double(moneyS) ?? 1.0
+                
+            }
+            .overlay {
+                RoundedRectangle(cornerRadius: 12.0)
+                    .stroke(style: StrokeStyle(lineWidth: 3.0))
+                    .foregroundColor(.blue)
+                    .frame(width: 140, height:60)
             }
             .font(.title)
-                .overlay {
-                    RoundedRectangle(cornerRadius: 12.0)
-                        .stroke(style: StrokeStyle(lineWidth: 3.0))
-                        .foregroundColor(.blue)
-                        .frame(width: 140, height:60)
-                }
+            
+            
+                
             Spacer()
+                .toolbar {
+                    ToolbarItem(placement: .keyboard) {
+                        Spacer()
+                    }
+                    ToolbarItem(placement: .keyboard) {
+                        Button {
+                            focusedField = nil
+                        } label: {
+                            Image(systemName: "keyboard.chevron.compact.down")
+                        }
+                    }
+                }
+        }
+        .onAppear{
+            UITextField.appearance().clearButtonMode = .whileEditing
+            moneyS = String(money)
+            print ("InputMoneyView Start, moneyS =\(moneyS), money = \(money)")
         }
     }
 }

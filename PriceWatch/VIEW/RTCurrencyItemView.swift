@@ -14,6 +14,8 @@ struct RTCurrencyItemView: View {
     var editable: Bool
     @State var enteredMoney: Double = 0.0
     @State var enteredMoneyStr: String = "1.0"
+    
+    
     //MARK: - VIEW
     var body: some View {
         HStack(alignment: .center){
@@ -21,35 +23,31 @@ struct RTCurrencyItemView: View {
                 .multilineTextAlignment(.leading)
                 .foregroundColor(cur.isBaseDollar ? .blue : .primary)
                 .frame(width:40)
-                
-//            Spacer()
-//                .frame(width: 20)
+             
             Image(cur.name.rawValue)
                 .resizable()
                 .scaledToFit()
+//                .scaleEffect(cur.isBaseDollar ? 1.1 : 1.0)
+//                .animation(.interpolatingSpring(mass: 1, stiffness: 1, damping: 0.5, initialVelocity: 10), value: scaleFactor)
                 .frame(width: 30)
                 .padding(.trailing,20)
+                .opacity(cur.isBaseDollar ? 1.0 : 0.7)
 
             Spacer()
-            Text(" \(cur.money.formatted(.currency(code: cur.name.rawValue).rounded(rule: .awayFromZero, increment: 0.001)))")
+            Text(" \(cur.money.formatted(.currency(code: cur.name.rawValue).rounded(rule: .awayFromZero, increment: 0.01)))")
                     .foregroundColor(editable ? .green : (cur.vaildate ? .primary : .gray.opacity(0.5)))
                     .font(.title)
                     .multilineTextAlignment(.trailing)
                     .padding(.trailing,20)
-            
-                
-//            Text("\(Date(timeIntervalSince1970: cur.timestamp).formatted(.dateTime.locale(Locale(identifier: "US"))))")
-//                .font(.system(size: 8))
-//                .fontWeight(.light)
-//                .opacity(0.3)
-//                .frame(width: 45)
+
                 
         }
         .padding(.vertical,20)
         .onAppear(){
-//            cur.money = cur.rate
+            
             self.enteredMoney = cur.rate
             self.enteredMoneyStr = String(self.enteredMoney)
+            
         }
     }
     

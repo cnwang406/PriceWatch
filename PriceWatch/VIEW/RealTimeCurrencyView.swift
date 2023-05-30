@@ -18,6 +18,7 @@ struct RealTimeCurrencyView: View {
         return formatter
     }
     
+    @State private var scaleFactor: Double = 1.0
     static let numberFormat: NumberFormatter =  {
            let numberFormatter = NumberFormatter()
            numberFormatter.numberStyle = .none
@@ -39,20 +40,31 @@ struct RealTimeCurrencyView: View {
             NavigationStack{
                     
 
-                Text("1 \(vm.basedDollar?.rawValue ?? "TWD") = ?foriegn dollars ")
+                HStack{
+                    Image(vm.basedDollar?.rawValue ?? "TWD")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30)
+                        .padding(.trailing,20)
+                    Text("1 \(vm.basedDollar?.rawValue ?? "TWD") = ?foriegn dollars ")
+                }
                 List (vm.currency) { cur in
                     RTCurrencyItemView(cur: cur, editable: false)
                     .padding(.horizontal,3)
                     .multilineTextAlignment(.leading)
+                    .scaleEffect(cur.isBaseDollar ? 1.1 : 1.0)
+                    .animation(.interpolatingSpring(mass: 1, stiffness: 0.95, damping: 1.5, initialVelocity: 1), value: scaleFactor)
                     .onTapGesture {
                         if vm.basedDollar == cur.name {
                             print ("Edit")
                             self.showInputView.toggle()
                         } else {
                             print ("basedollar to \(cur.name.rawValue)")
-                            vm.basedDollar = cur.name
+                            vm.setBaseDollar(cur.name)
+                            scaleFactor = cur.isBaseDollar ? 1.1 : 1.0
                             vm.baseRate = cur.rate
                             vm.edit(CheckCurrency: cur)
+                            print ("scaleEffect : \(scaleFactor) for \(cur.name.rawValue)")
                         }
                     }
                     .onSubmit {
@@ -62,6 +74,7 @@ struct RealTimeCurrencyView: View {
                     }
                     
                 }
+    
                 
                 
                 Spacer()
@@ -78,17 +91,13 @@ struct RealTimeCurrencyView: View {
             
         }
         .sheet(isPresented: $showInputView, onDismiss: {
-            print ("new value : \(moneyInput) for \(vm.basedDollar)")
+            print ("new value : \(moneyInput) for \(vm.basedDollar?.rawValue ?? "")")
             vm.baseMoney = moneyInput
-//            vm.dm.baseMoney = moneyInput
-//            print ("vm.dm.baseMoney = \(vm.dm.baseMoney)")
-//            vm.dm.parse()
             vm.calculate()
         }, content: {
-            
             InputMoneyView(money: $moneyInput, showInputView: $showInputView)
-                .presentationDetents([.medium, .large])
-                .presentationDragIndicator(.hidden)
+                .presentationDetents([.medium,.fraction(0.3)])
+//                .presentationDragIndicator(.hidden)
         })
             
         .padding()

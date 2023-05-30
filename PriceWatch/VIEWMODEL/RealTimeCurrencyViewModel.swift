@@ -75,9 +75,16 @@ class RealTimeCurrencyViewModel: ObservableObject {
         for  idx in self.currency.indices {
             
             currency[idx].money =  baseRate / currency[idx].rate  * baseMoney
-            print ("\(currency[idx].name.rawValue), rate = \(currency[idx].rate) / \(baseRate) * \(baseMoney) = \(currency[idx].money)")
+//            print ("\(currency[idx].name.rawValue), rate = \(currency[idx].rate) / \(baseRate) * \(baseMoney) = \(currency[idx].money)")
         }
         
+    }
+    func setBaseDollar(_ dollar: Dollars){
+        self.basedDollar = dollar
+        for  idx in self.currency.indices {
+            currency[idx].isBaseDollar =  currency[idx].name == dollar
+//            print ("\(currency[idx].name.rawValue), rate = \(currency[idx].rate) / \(baseRate) * \(baseMoney) = \(currency[idx].money)")
+        }
         
     }
 }
