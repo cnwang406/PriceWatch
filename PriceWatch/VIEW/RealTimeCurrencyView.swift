@@ -48,31 +48,31 @@ struct RealTimeCurrencyView: View {
                         .padding(.trailing,20)
                     Text("1 \(vm.basedDollar?.rawValue ?? "TWD") = ?foriegn dollars ")
                 }
-                List (vm.currency) { cur in
-                    RTCurrencyItemView(cur: cur, editable: false)
-                    .padding(.horizontal,3)
-                    .multilineTextAlignment(.leading)
-                    .scaleEffect(cur.isBaseDollar ? 1.1 : 1.0)
-                    .animation(.interpolatingSpring(mass: 1, stiffness: 0.95, damping: 1.5, initialVelocity: 1), value: scaleFactor)
-                    .onTapGesture {
-                        if vm.basedDollar == cur.name {
-                            print ("Edit")
-                            self.showInputView.toggle()
-                        } else {
-                            print ("basedollar to \(cur.name.rawValue)")
-                            vm.setBaseDollar(cur.name)
-                            scaleFactor = cur.isBaseDollar ? 1.1 : 1.0
-                            vm.baseRate = cur.rate
-                            vm.edit(CheckCurrency: cur)
-                            print ("scaleEffect : \(scaleFactor) for \(cur.name.rawValue)")
+                List {
+                    ForEach (vm.currency) { cur in
+                        let isSelected = vm.getIsBaseDollar(dollar: cur.name)
+                        RTCurrencyItemView(cur: cur, editable: false)
+                        .padding(.horizontal,3)
+                        .multilineTextAlignment(.leading)
+                        .scaleEffect(cur.isBaseDollar ? 1.1 : 1.0)
+                        .onTapGesture {
+                            if vm.basedDollar == cur.name {
+                                self.showInputView.toggle()
+                            } else {
+                                playFeedbackHaptic(.light)
+                                vm.setBaseDollar(cur.name)
+                                vm.baseRate = cur.rate
+                                vm.edit(CheckCurrency: cur)
+                            }
                         }
-                    }
-                    .onSubmit {
-                        print ("CurrecnyView submit \(cur.rate)")
+                        .animation(.interactiveSpring(response: 1, dampingFraction: 0.51604, blendDuration: 0.48244 ), value: isSelected)
+                        .onSubmit {
+                            print ("CurrecnyView submit \(cur.rate)")
+                            
+                            
+                        }
                         
-                        
                     }
-                    
                 }
     
                 
@@ -103,6 +103,7 @@ struct RealTimeCurrencyView: View {
         .padding()
         .task {
             await vm.reload()
+            playFeedbackHaptic(.light)
         }
         .refreshable {
             await vm.reload()

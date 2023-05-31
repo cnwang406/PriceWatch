@@ -87,4 +87,18 @@ class RealTimeCurrencyViewModel: ObservableObject {
         }
         
     }
-}
+    
+    func getIsBaseDollar(dollar: Dollars) -> Bool {
+        var result: Bool = false
+        for cur in currency {
+            if cur.name == dollar {
+                result = cur.isBaseDollar
+                print ("\(cur.name.rawValue) --> baseDollar \(cur.isBaseDollar)")
+            }
+        }
+        return result
+        }
+        
+        
+    }
+

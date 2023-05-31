@@ -34,7 +34,7 @@ struct InputMoneyView: View {
         VStack{
             HStack{
                 
-                Text("Input $$ in \(dm.baseDollar.rawValue))")
+                Text("Input $$ in \(dm.baseDollar.rawValue)")
                 Image(dm.baseDollar.rawValue)
                     .resizable()
                     .scaledToFit()
@@ -48,22 +48,29 @@ struct InputMoneyView: View {
 //            TextField(moneyEnteredStr, value: $money, formatter: numberFormatter)
             TextField(moneyEnteredStr, text: $moneyS)
                 .multilineTextAlignment(.trailing)
-                .font(.title)
+                .font(.system(size: 50))
+                .fontWeight(.bold)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .focused($focusedField, equals: .dec)
-                .background(.yellow)
                 .keyboardType(.decimalPad)
                 .onTapGesture {
                     moneyS="1"
                     money=1.0
                 }
+                .overlay {
+                    RoundedRectangle(cornerRadius: 20.0)
+                        .stroke(style: StrokeStyle(lineWidth: 3.0))
+                        .foregroundColor(.blue)
+                        
+                }
                 .numbersOnly($moneyS, includeDecimal: true)
-                .padding(.horizontal,40)
+                .padding(.horizontal,20)
                 .padding(40)
 
             Button("OK") {
                 showInputView = false
                 money = Double(moneyS) ?? 1.0
+                playFeedbackHaptic(.heavy)
                 
             }
             .overlay {

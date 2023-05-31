@@ -27,11 +27,9 @@ struct RTCurrencyItemView: View {
             Image(cur.name.rawValue)
                 .resizable()
                 .scaledToFit()
-//                .scaleEffect(cur.isBaseDollar ? 1.1 : 1.0)
-//                .animation(.interpolatingSpring(mass: 1, stiffness: 1, damping: 0.5, initialVelocity: 10), value: scaleFactor)
                 .frame(width: 30)
                 .padding(.trailing,20)
-                .opacity(cur.isBaseDollar ? 1.0 : 0.7)
+                .opacity(cur.isBaseDollar ? 1.0 : 0.5)
 
             Spacer()
             Text(" \(cur.money.formatted(.currency(code: cur.name.rawValue).rounded(rule: .awayFromZero, increment: 0.01)))")

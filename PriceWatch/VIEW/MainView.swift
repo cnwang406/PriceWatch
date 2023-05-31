@@ -15,7 +15,12 @@ struct MainView: View {
             
             RealTimeCurrencyView()
                 .tabItem {
-                    Text("RealTime")
+                    
+                        
+                            
+                        
+                        Text("RealTime")
+                    
                 }
             DailyCurrencyView()
                 .tabItem{
