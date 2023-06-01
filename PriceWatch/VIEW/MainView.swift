@@ -15,16 +15,23 @@ struct MainView: View {
             
             RealTimeCurrencyView()
                 .tabItem {
-                    
-                        
-                            
-                        
+                      Image(systemName: "arrow.up")
                         Text("RealTime")
-                    
                 }
             DailyCurrencyView()
                 .tabItem{
+                    Image(systemName: "clock")
                     Text("Daily")}
+            AlarmView()
+                .tabItem {
+                    Image(systemName: "alarm")
+                    Text("Alarm")
+                }
+            ProgressView()
+                .tabItem {
+                    Image(systemName: "gear")
+                    Text("Setting")
+                }
         }
         
             

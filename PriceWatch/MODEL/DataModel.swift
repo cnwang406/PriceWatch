@@ -149,6 +149,17 @@ class CurrencyModel: ObservableObject {
         }
     }
     
+    func getXRate(dollar: Dollars) -> Double {
+        var rate: Double = 0.0
+        for d in currency {
+            if d.name == dollar {
+                rate = d.rate
+            }
+                
+        }
+        return rate
+    }
+    
     func resetBaseMoney() {
 //        self.baseMoney = 1.0
     }
