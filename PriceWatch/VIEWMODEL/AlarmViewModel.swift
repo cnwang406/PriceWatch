@@ -12,6 +12,7 @@ class AlarmViewModel: ObservableObject {
     @Published var watchList:[Dollars] = [.USD,.AUD,.JPY,.ZAR]
     @Published var alarmList: [AlarmModel] = []
     var dm = CurrencyModel.share
+    static var share = AlarmViewModel()
     func loadAlarms(){
         alarmList = []
         for wl in watchList {
@@ -21,6 +22,40 @@ class AlarmViewModel: ObservableObject {
         }
     }
     
+}
+
+
+let alarmGaugeGradient = Gradient(colors: [.red, .orange, .blue, .green])
+func ratePosition(item: AlarmModel) -> (Double, AlarmStatus) {
+    
+    let width = item.high * 1.1 - item.low * 0.9
+    let ratio = (item.rate - item.low * 0.9) / width
+    var status: AlarmStatus = .tooLow
+    if item.rate < item.low {
+        status = .tooLow
+    } else if item.rate <= item.buy {
+        status = .lowerThenBuy
+    } else if item.rate < item.high {
+        status = .higherThenBuy
+    } else {
+        status = .tooHigh
+    }
+        
+    return (ratio, status)
+    
+}
+
+func statusColor(status: AlarmStatus) -> Color {
+    switch status {
+    case .tooHigh:
+        return .green
+    case .higherThenBuy:
+        return .blue
+    case .lowerThenBuy:
+        return .orange
+    case .tooLow:
+        return .red
+    }
 }
 
 

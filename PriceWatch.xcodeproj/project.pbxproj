@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27206FF82A29D5F0003A18AD /* AlarmEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27206FF72A29D5F0003A18AD /* AlarmEditView.swift */; };
 		2724DA4E2A1F52E900A9E1D7 /* RTCurrencyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2724DA4D2A1F52E900A9E1D7 /* RTCurrencyItemView.swift */; };
 		2725CEEE2A1383660003E02E /* PriceWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2725CEED2A1383660003E02E /* PriceWatchApp.swift */; };
 		2725CEF02A1383660003E02E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2725CEEF2A1383660003E02E /* MainView.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27206FF72A29D5F0003A18AD /* AlarmEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmEditView.swift; sourceTree = "<group>"; };
 		2724DA4D2A1F52E900A9E1D7 /* RTCurrencyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTCurrencyItemView.swift; sourceTree = "<group>"; };
 		2725CEEA2A1383660003E02E /* PriceWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PriceWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2725CEED2A1383660003E02E /* PriceWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceWatchApp.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				2735118A2A28702400834D1F /* AlarmView.swift */,
 				2735118E2A287EC200834D1F /* AlarmItemView.swift */,
+				27206FF72A29D5F0003A18AD /* AlarmEditView.swift */,
 			);
 			path = AlarmView;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				27DB697D2A17749C009BD4D1 /* RealTimeCurrencyViewModel.swift in Sources */,
 				27DB69742A15DE00009BD4D1 /* DailyCurrencyView.swift in Sources */,
 				2725CF012A1494780003E02E /* Service.swift in Sources */,
+				27206FF82A29D5F0003A18AD /* AlarmEditView.swift in Sources */,
 				2725CF042A1495360003E02E /* Constant.swift in Sources */,
 				2735118D2A2870AB00834D1F /* AlarmViewModel.swift in Sources */,
 				2725CEEE2A1383660003E02E /* PriceWatchApp.swift in Sources */,
