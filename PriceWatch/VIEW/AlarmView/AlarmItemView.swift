@@ -30,13 +30,17 @@ struct AlarmItemView: View {
                 .frame(width: 40)
             Gauge(value: rate) {
                 Text(item.dollar.rawValue)
+                    
             } currentValueLabel: {
                 Text("\(item.rate.formatted())")
                     .foregroundColor(statusColor(status: status))
+                    .font(.caption)
             } minimumValueLabel: {
                 Text("\(item.low.formatted())")
+                    .font(.system(size: 8.0))
             } maximumValueLabel: {
                 Text("\(item.high.formatted(.number))")
+                    .font(.system(size: 8.0))
             } markedValueLabels: {
                 Text("haaa")
             }

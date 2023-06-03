@@ -21,6 +21,7 @@
 		2735118B2A28702400834D1F /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2735118A2A28702400834D1F /* AlarmView.swift */; };
 		2735118D2A2870AB00834D1F /* AlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2735118C2A2870AB00834D1F /* AlarmViewModel.swift */; };
 		2735118F2A287EC200834D1F /* AlarmItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2735118E2A287EC200834D1F /* AlarmItemView.swift */; };
+		275AD3AF2A2B01350048D274 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275AD3AE2A2B01350048D274 /* SliderView.swift */; };
 		276AD5992A24F11500777A42 /* NumberOnlyViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276AD5982A24F11500777A42 /* NumberOnlyViewModifier.swift */; };
 		27DB69722A15AC19009BD4D1 /* RealTimeCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DB69712A15AC19009BD4D1 /* RealTimeCurrencyView.swift */; };
 		27DB69742A15DE00009BD4D1 /* DailyCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DB69732A15DE00009BD4D1 /* DailyCurrencyView.swift */; };
@@ -47,6 +48,7 @@
 		2735118A2A28702400834D1F /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		2735118C2A2870AB00834D1F /* AlarmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewModel.swift; sourceTree = "<group>"; };
 		2735118E2A287EC200834D1F /* AlarmItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmItemView.swift; sourceTree = "<group>"; };
+		275AD3AE2A2B01350048D274 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		276AD5982A24F11500777A42 /* NumberOnlyViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOnlyViewModifier.swift; sourceTree = "<group>"; };
 		27DB69712A15AC19009BD4D1 /* RealTimeCurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeCurrencyView.swift; sourceTree = "<group>"; };
 		27DB69732A15DE00009BD4D1 /* DailyCurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCurrencyView.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				2735118A2A28702400834D1F /* AlarmView.swift */,
 				2735118E2A287EC200834D1F /* AlarmItemView.swift */,
 				27206FF72A29D5F0003A18AD /* AlarmEditView.swift */,
+				275AD3AE2A2B01350048D274 /* SliderView.swift */,
 			);
 			path = AlarmView;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				27DB697F2A178AB5009BD4D1 /* Date+Extension.swift in Sources */,
 				2725CEF02A1383660003E02E /* MainView.swift in Sources */,
 				27DB697B2A160C88009BD4D1 /* DailyCurrencyViewModel.swift in Sources */,
+				275AD3AF2A2B01350048D274 /* SliderView.swift in Sources */,
 				27DB69822A191776009BD4D1 /* String+Extension.swift in Sources */,
 				2725CF062A1495CD0003E02E /* Util.swift in Sources */,
 				27DB697D2A17749C009BD4D1 /* RealTimeCurrencyViewModel.swift in Sources */,

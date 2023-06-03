@@ -21,40 +21,66 @@ struct AlarmEditView: View {
             Text("Edit Alarm")
                 .font(.title)
             Spacer()
+            
+            
             Gauge(value: am.rate) {
                 Text(am.dollar.rawValue)
             } currentValueLabel: {
-                Text("\(am.rate.formatted())")
+                Text("\(am.rate.formatted(.number.rounded(rule: .awayFromZero, increment: 0.1)))")
                     .foregroundColor(statusColor(status: status))
             } minimumValueLabel: {
-                Text("\(am.low.formatted())")
+                Text("\(editAm.low.formatted(.number.rounded(rule: .awayFromZero, increment: 0.1)))")
+                    .font(.system(size: 6))
             } maximumValueLabel: {
-                Text("\(am.high.formatted(.number))")
+                Text("\(editAm.high.formatted(.number.rounded(rule: .awayFromZero, increment: 0.1)))")
+                    .font(.system(size: 6))
             } markedValueLabels: {
                 Text("haaa")
             }
-//            .tint(statusColor(status: status))
+            //            .tint(statusColor(status: status))
             .tint(alarmGaugeGradient)
             .gaugeStyle(.accessoryCircular)
-//            .background(.pink)
-            .scaleEffect(2)
+            //            .background(.pink)
+            .scaleEffect(4)
             .animation(.easeIn(duration: 2.0), value: drawDot)
             .frame(width: 160)
             .padding(.bottom, 30)
+            
             Text("\(editAm.dollar.rawValue)")
                 .font(.title2)
-            Text("Alarm Low = \(editAm.low.formatted())")
-                .font(.title2)
-            Text("Alarm High = \(editAm.high.formatted())")
-                .font(.title2)
-            Text("Alarm Buy = \(editAm.buy.formatted())")
-                .font(.title2)
+            
+            
+            HStack{
+                
+                Text("Low = \(editAm.low.formatted(.number.rounded(rule: .awayFromZero, increment: 0.1)))")
+                    .font(.title2)
+                Slider(value: $editAm.low, in: (0...am.high))
+                    .frame(width: 250)
+            }
+            HStack{
+                
+                Text("High = \(editAm.high.formatted(.number.rounded(rule: .awayFromZero, increment: 0.1)))")
+                    .font(.title2)
+                Slider(value: $editAm.high, in: (am.low...100))
+                    .frame(width: 250)
+            }
+            HStack{
+                Text("Buy = \(editAm.buy.formatted(.number.rounded(rule: .awayFromZero, increment: 0.1)))")
+                    .font(.title2)
+                Slider(value: $editAm.buy, in: (am.low...am.high))
+                    .frame(width: 250)
+                
+            }
             Text("Alarm Now = \(editAm.rate.formatted())")
                 .font(.title2)
+            
+            
+            
             Spacer()
             Button("OK") {
                 showInputView = false
                 am = editAm
+                print (editAm)
                 playFeedbackHaptic(.heavy)
                 
             }
@@ -67,16 +93,17 @@ struct AlarmEditView: View {
             .font(.title)
             
         }
+        .padding(.horizontal,20)
         
+        
+        .onAppear{
+            editAm = am
             
-            .onAppear{
-                editAm = am
-                
-            }
+        }
         
-                
+        
     }
-        
+    
 }
 
 
