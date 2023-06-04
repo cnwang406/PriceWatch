@@ -17,88 +17,89 @@ struct AlarmEditView: View {
     
     //MARK: - VIEW
     var body: some View {
-        VStack(spacing: 30){
-            Text("Edit Alarm")
+        NavigationView {
+            VStack(spacing: 30){
+                Gauge(value: (am.rate - am.low) / (am.high - am.low)) {
+                    Text(am.dollar.rawValue)
+                } currentValueLabel: {
+                    Text("\(am.rate.formatted(.number.rounded(rule: .awayFromZero, increment: 0.1)))")
+                        .foregroundColor(statusColor(status: status))
+                } minimumValueLabel: {
+                    Text("\(editAm.low.formatted(.number.rounded(rule: .awayFromZero, increment: 0.1)))")
+                        .font(.system(size: 6))
+                } maximumValueLabel: {
+                    Text("\(editAm.high.formatted(.number.rounded(rule: .awayFromZero, increment: 0.1)))")
+                        .font(.system(size: 6))
+                } markedValueLabels: {
+                    Text("haaa")
+                }
+                //            .tint(statusColor(status: status))
+                .tint(alarmGaugeGradient)
+                .gaugeStyle(.accessoryCircular)
+                //            .background(.pink)
+                .scaleEffect(4)
+                .animation(.easeIn(duration: 2.0), value: drawDot)
+                .frame(width: 160)
+                .padding(.top, 90)
+                .padding(.bottom, 30)
+                
+                Text("\(editAm.dollar.rawValue)")
+                    .font(.title2)
+                
+                
+                HStack{
+                    
+                    Text("Low = \(editAm.low.myFormat(digit: 3))")
+                        .font(.title2)
+                    Slider(value: $editAm.low, in: (0...am.high))
+                        .frame(width: 250)
+                }
+                HStack{
+                    
+                    Text("High = \(editAm.high.myFormat(digit: 3))")
+                        .font(.title2)
+                    Slider(value: $editAm.high, in: (am.low...100))
+                        .frame(width: 250)
+                }
+                HStack{
+                    Text("Buy = \(editAm.buy.myFormat(digit: 3))")
+                        .font(.title2)
+                    Slider(value: $editAm.buy, in: (am.low...am.high))
+                        .frame(width: 250)
+                    
+                }
+                Text("Alarm Now = \(editAm.rate.formatted())")
+                    .font(.title2)
+                
+                
+                
+                Spacer()
+                Button("OK") {
+                    showInputView = false
+                    am = editAm
+                    print ("ok in AlarmEditView")
+                    print (" editAm = \(editAm)")
+                    print (" am = \(am)")
+                    playFeedbackHaptic(.heavy)
+                    
+                }
+                .overlay {
+                    RoundedRectangle(cornerRadius: 12.0)
+                        .stroke(style: StrokeStyle(lineWidth: 3.0))
+                        .foregroundColor(.blue)
+                        .frame(width: 140, height:60)
+                }
                 .font(.title)
-            Spacer()
-            
-            
-            Gauge(value: am.rate) {
-                Text(am.dollar.rawValue)
-            } currentValueLabel: {
-                Text("\(am.rate.formatted(.number.rounded(rule: .awayFromZero, increment: 0.1)))")
-                    .foregroundColor(statusColor(status: status))
-            } minimumValueLabel: {
-                Text("\(editAm.low.formatted(.number.rounded(rule: .awayFromZero, increment: 0.1)))")
-                    .font(.system(size: 6))
-            } maximumValueLabel: {
-                Text("\(editAm.high.formatted(.number.rounded(rule: .awayFromZero, increment: 0.1)))")
-                    .font(.system(size: 6))
-            } markedValueLabels: {
-                Text("haaa")
-            }
-            //            .tint(statusColor(status: status))
-            .tint(alarmGaugeGradient)
-            .gaugeStyle(.accessoryCircular)
-            //            .background(.pink)
-            .scaleEffect(4)
-            .animation(.easeIn(duration: 2.0), value: drawDot)
-            .frame(width: 160)
-            .padding(.bottom, 30)
-            
-            Text("\(editAm.dollar.rawValue)")
-                .font(.title2)
-            
-            
-            HStack{
-                
-                Text("Low = \(editAm.low.formatted(.number.rounded(rule: .awayFromZero, increment: 0.1)))")
-                    .font(.title2)
-                Slider(value: $editAm.low, in: (0...am.high))
-                    .frame(width: 250)
-            }
-            HStack{
-                
-                Text("High = \(editAm.high.formatted(.number.rounded(rule: .awayFromZero, increment: 0.1)))")
-                    .font(.title2)
-                Slider(value: $editAm.high, in: (am.low...100))
-                    .frame(width: 250)
-            }
-            HStack{
-                Text("Buy = \(editAm.buy.formatted(.number.rounded(rule: .awayFromZero, increment: 0.1)))")
-                    .font(.title2)
-                Slider(value: $editAm.buy, in: (am.low...am.high))
-                    .frame(width: 250)
                 
             }
-            Text("Alarm Now = \(editAm.rate.formatted())")
-                .font(.title2)
+            .padding(.horizontal,20)
             
-            
-            
-            Spacer()
-            Button("OK") {
-                showInputView = false
-                am = editAm
-                print (editAm)
-                playFeedbackHaptic(.heavy)
+            .navigationTitle("Edit Alarm")
+            .onAppear{
+                print ("AlarmEditView appear")
+                editAm = am
                 
-            }
-            .overlay {
-                RoundedRectangle(cornerRadius: 12.0)
-                    .stroke(style: StrokeStyle(lineWidth: 3.0))
-                    .foregroundColor(.blue)
-                    .frame(width: 140, height:60)
-            }
-            .font(.title)
-            
         }
-        .padding(.horizontal,20)
-        
-        
-        .onAppear{
-            editAm = am
-            
         }
         
         

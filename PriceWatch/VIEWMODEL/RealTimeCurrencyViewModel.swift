@@ -93,7 +93,7 @@ class RealTimeCurrencyViewModel: ObservableObject {
         for cur in currency {
             if cur.name == dollar {
                 result = cur.isBaseDollar
-                print ("\(cur.name.rawValue) --> baseDollar \(cur.isBaseDollar)")
+//                print ("\(cur.name.rawValue) --> baseDollar \(cur.isBaseDollar)")
             }
         }
         return result

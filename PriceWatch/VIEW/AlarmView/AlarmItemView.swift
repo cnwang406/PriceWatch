@@ -22,25 +22,29 @@ struct AlarmItemView: View {
     
     //MARK: - VIEW
     var body: some View {
+        
+
         HStack{
             Text(item.dollar.rawValue)
             Image(item.dollar.rawValue)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 40)
-            Gauge(value: rate) {
+            Gauge(value: (item.rate - item.low) / (item.high - item.low)) {
                 Text(item.dollar.rawValue)
                     
             } currentValueLabel: {
-                Text("\(item.rate.formatted())")
+
+                Text("\(item.rate.myFormat(digit: 4))")
+               
                     .foregroundColor(statusColor(status: status))
                     .font(.caption)
             } minimumValueLabel: {
-                Text("\(item.low.formatted())")
-                    .font(.system(size: 8.0))
+                Text("\(item.low.myFormat(digit: 3))")
+                    .font(.system(size: 6.0))
             } maximumValueLabel: {
-                Text("\(item.high.formatted(.number))")
-                    .font(.system(size: 8.0))
+                Text("\(item.high.myFormat(digit: 3))")
+                    .font(.system(size: 6.0))
             } markedValueLabels: {
                 Text("haaa")
             }
@@ -49,7 +53,7 @@ struct AlarmItemView: View {
             .gaugeStyle(.accessoryCircular)
 //            .background(.pink)
             .scaleEffect(2)
-            .animation(.easeIn(duration: 2.0), value: drawDot)
+            .animation(.easeIn(duration: 2.5), value: drawDot)
             .frame(width: 160)
             
         }
@@ -57,11 +61,25 @@ struct AlarmItemView: View {
         .onAppear {
             
                 (self.rate, self.status) = ratePosition(item: self.item)
+            
             drawDot.toggle()
+            
             
         }
     }
     
+//    func roundTo(number : Double, digit: Int) -> Double {
+//        
+//        
+//        var r =  (pow(10, digit - (String(Int(number)).count))) as NSNumber
+//        var k: Double = 0
+//        if number < 1 {
+//              k = Double (truncating: r) * 10
+//        } else {
+//            k = Double(truncating: r)
+//        }
+//        return  1 / k
+//    }
     
 }
 

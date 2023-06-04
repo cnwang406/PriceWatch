@@ -58,7 +58,7 @@ enum DataType: String {
     
 }
 
-enum Dollars: String, CaseIterable  {
+enum Dollars: String, CaseIterable, Codable  {
     case TWD = "TWD"
     case USD = "USD"
     case JPY = "JPY"
@@ -71,8 +71,8 @@ enum Dollars: String, CaseIterable  {
     
 }
 
-struct MyCurrencyModel: Identifiable {
-    let id = UUID()
+struct MyCurrencyModel: Identifiable, Codable {
+    var id = UUID()
     let timestamp: Double
     let name: Dollars
     let rate: Double
@@ -94,6 +94,7 @@ class CurrencyModel: ObservableObject {
     @Published var latestUpdate: Double = Date().timeIntervalSince1970
     @Published var currency: [MyCurrencyModel] = []
     @Published var baseDollar: Dollars = .TWD
+    @Published var currency2: [MyCurrencyModel] = []
 //    @Published var baseXRate: Double = 1.0
 //    @Published var baseMoney : Double = 1.0
     func reload(fetchType: DataType) async {
@@ -141,12 +142,13 @@ class CurrencyModel: ObservableObject {
             let xrate = validate ?  baseDollarRate / rate : 0.0
 //            let money = validate ? xrate * baseMoney  : 0.0
             let isBaseDollar = dollar == bdollar
-            print ("\(xname), rate = \(rate), validate = \(validate ? "T" : "F"), xrate = \(xrate) ,isBaseDollar = \(isBaseDollar)")
+//            print ("\(xname), rate = \(rate), validate = \(validate ? "T" : "F"), xrate = \(xrate) ,isBaseDollar = \(isBaseDollar)")
             let newCurrency = MyCurrencyModel(timestamp: rtCurrencies[xname]?.utc.formDateFromUTC().timeIntervalSince1970 ?? 0.0, name: dollar, rate:xrate, vaildate: validate, isBaseDollar: isBaseDollar,  money: 0.0)
             
             currency.append(newCurrency)
     
         }
+        save()
     }
     
     func getXRate(dollar: Dollars) -> Double {
@@ -164,5 +166,21 @@ class CurrencyModel: ObservableObject {
 //        self.baseMoney = 1.0
     }
     
-    
+    func save() {
+        //stock = UserDefaults(suiteName: groupIdentifier)?.string(forKey: "stock") ?? "聯穎光電"
+        let userDefaults = UserDefaults.standard
+        if let encodedUserDetails = try? JSONEncoder().encode(self.currency) {
+           UserDefaults.standard.set(encodedUserDetails, forKey: "currency")
+        }
+
+    }
+    func load() -> [MyCurrencyModel]{
+        var ret : [MyCurrencyModel] = []
+        if let decodedData = UserDefaults.standard.object(forKey: "currency") as? Data {
+            if let userDetails = try? JSONDecoder().decode([MyCurrencyModel].self, from: decodedData) {
+               ret = userDetails
+          }
+        }
+        return ret
+    }
 }

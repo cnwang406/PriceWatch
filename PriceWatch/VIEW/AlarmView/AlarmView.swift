@@ -51,7 +51,11 @@ struct AlarmView: View {
                 
                 .sheet(isPresented: $showInputView) {
                     print ("dismiss")
-                    print (vm.alarmList[modifyIdx])
+                    print ("vm.alarmList[\(modifyIdx)] = \(vm.alarmList[modifyIdx])")
+                    print ("myEditAm = \(myEditAm)")
+                    vm.alarmList[modifyIdx] = myEditAm
+                    print ("after assign, vm.alarmList[\(modifyIdx)] = \(vm.alarmList[modifyIdx])")
+                    vm.save()
                 } content: {
                     
 //                    AlarmEditView(am: $vm.alarmList[modifyIdx]  ,showInputView: $showInputView)

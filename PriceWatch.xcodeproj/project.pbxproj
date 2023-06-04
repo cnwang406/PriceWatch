@@ -21,6 +21,8 @@
 		2735118B2A28702400834D1F /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2735118A2A28702400834D1F /* AlarmView.swift */; };
 		2735118D2A2870AB00834D1F /* AlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2735118C2A2870AB00834D1F /* AlarmViewModel.swift */; };
 		2735118F2A287EC200834D1F /* AlarmItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2735118E2A287EC200834D1F /* AlarmItemView.swift */; };
+		274ABA412A2C4AF8004A4E11 /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274ABA402A2C4AF8004A4E11 /* AlarmModel.swift */; };
+		274ABA432A2C6BA2004A4E11 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274ABA422A2C6BA2004A4E11 /* Double+Extension.swift */; };
 		275AD3AF2A2B01350048D274 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275AD3AE2A2B01350048D274 /* SliderView.swift */; };
 		276AD5992A24F11500777A42 /* NumberOnlyViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276AD5982A24F11500777A42 /* NumberOnlyViewModifier.swift */; };
 		27DB69722A15AC19009BD4D1 /* RealTimeCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DB69712A15AC19009BD4D1 /* RealTimeCurrencyView.swift */; };
@@ -48,6 +50,8 @@
 		2735118A2A28702400834D1F /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		2735118C2A2870AB00834D1F /* AlarmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewModel.swift; sourceTree = "<group>"; };
 		2735118E2A287EC200834D1F /* AlarmItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmItemView.swift; sourceTree = "<group>"; };
+		274ABA402A2C4AF8004A4E11 /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
+		274ABA422A2C6BA2004A4E11 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		275AD3AE2A2B01350048D274 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		276AD5982A24F11500777A42 /* NumberOnlyViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOnlyViewModifier.swift; sourceTree = "<group>"; };
 		27DB69712A15AC19009BD4D1 /* RealTimeCurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeCurrencyView.swift; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 			children = (
 				2725CF002A1494780003E02E /* Service.swift */,
 				2725CEFE2A1494310003E02E /* DataModel.swift */,
+				274ABA402A2C4AF8004A4E11 /* AlarmModel.swift */,
 				2725CF032A1495360003E02E /* Constant.swift */,
 			);
 			path = MODEL;
@@ -177,6 +182,7 @@
 			children = (
 				27DB697E2A178AB5009BD4D1 /* Date+Extension.swift */,
 				27DB69812A191776009BD4D1 /* String+Extension.swift */,
+				274ABA422A2C6BA2004A4E11 /* Double+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -259,6 +265,7 @@
 			files = (
 				276AD5992A24F11500777A42 /* NumberOnlyViewModifier.swift in Sources */,
 				2724DA4E2A1F52E900A9E1D7 /* RTCurrencyItemView.swift in Sources */,
+				274ABA412A2C4AF8004A4E11 /* AlarmModel.swift in Sources */,
 				2735118B2A28702400834D1F /* AlarmView.swift in Sources */,
 				2735118F2A287EC200834D1F /* AlarmItemView.swift in Sources */,
 				27DB69722A15AC19009BD4D1 /* RealTimeCurrencyView.swift in Sources */,
@@ -272,6 +279,7 @@
 				27DB697D2A17749C009BD4D1 /* RealTimeCurrencyViewModel.swift in Sources */,
 				27DB69742A15DE00009BD4D1 /* DailyCurrencyView.swift in Sources */,
 				2725CF012A1494780003E02E /* Service.swift in Sources */,
+				274ABA432A2C6BA2004A4E11 /* Double+Extension.swift in Sources */,
 				27206FF82A29D5F0003A18AD /* AlarmEditView.swift in Sources */,
 				2725CF042A1495360003E02E /* Constant.swift in Sources */,
 				2735118D2A2870AB00834D1F /* AlarmViewModel.swift in Sources */,
