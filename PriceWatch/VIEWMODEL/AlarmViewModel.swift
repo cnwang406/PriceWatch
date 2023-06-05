@@ -9,24 +9,20 @@ import SwiftUI
 
 @MainActor
 class AlarmViewModel: ObservableObject {
-    @Published var watchList:[Dollars] = [.USD,.AUD,.JPY,.ZAR]
+//    @Published var watchList:[Dollars] = [.USD,.AUD,.JPY,.ZAR]
+    @Published var watchList:[Dollars] = []
     @Published var alarmList: [AlarmModel] = []
     var dm = CurrencyModel.share
     static var share = AlarmViewModel()
     func loadAlarms(){
-        //        alarmList = []
-        //        for wl in watchList {
-        //            let xrate = dm.getXRate(dollar: wl)
-        //            let newAlarm = AlarmModel(dollar: wl,low: xrate * 0.9 , high: xrate * 1.1 ,rate : xrate, buy: xrate * 0.95,activate: true)
-        //            alarmList.append(newAlarm)
-        //        }
         alarmList = load()
+        
+        for al in alarmList {
+            watchList.append(al.dollar)
+        }
+        print ("AlarmViewModel : load \(watchList) as watchList")
         if alarmList == [] {
-            for wl in watchList {
-                let xrate = dm.getXRate(dollar: wl)
-                let newAlarm = AlarmModel(dollar: wl,low: xrate * 0.9 , high: xrate * 1.1 ,rate : xrate, buy: xrate * 0.95,activate: true)
-                alarmList.append(newAlarm)
-            }
+
             
         }
     }
@@ -47,6 +43,27 @@ class AlarmViewModel: ObservableObject {
             }
         }
         return ret
+    }
+    func addAlarm(_ am: AlarmModel){
+        print ("add \(am.dollar)")
+        self.alarmList.append(am)
+        self.save()
+    }
+    
+    func delAlarm(_ am: AlarmModel){
+        print ("delete \(am.dollar)")
+        print ("before delete, alarmList = \(alarmList)")
+        
+        do {
+            try alarmList[alarmList.firstIndex(of: am)!].dollar
+        } catch{
+            print ("cannot find \(am.dollar)")
+        }
+        alarmList.remove(at: alarmList.firstIndex(of: am)!)
+        
+        
+        print ("after delete, alarmList = \(alarmList)")
+        self.save()
     }
     
 }

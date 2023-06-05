@@ -14,7 +14,7 @@ extension Double {
     }
     
     
-    private func roundTo(number : Double, digit: Int) -> Double {
+     func roundTo(number : Double, digit: Int) -> Double {
     
         let r =  (pow(10, digit - (String(Int(number)).count))) as NSNumber
         var k: Double = 0

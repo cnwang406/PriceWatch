@@ -12,13 +12,14 @@ struct AlarmView: View {
     
     @StateObject var vm = AlarmViewModel()
     @State var showInputView:Bool = false
+    @State var showAddView:Bool = false
     @State var modifyIdx: Int = 0
     @State var myEditAm : AlarmModel = demoAlarmModel
     //MARK: - VIEW
     var body: some View {
         
         
-        NavigationView {
+        NavigationStack {
             List{
                 ForEach(vm.alarmList.indices, id:\.self) { idx in
                     let each = vm.alarmList[idx]
@@ -37,7 +38,10 @@ struct AlarmView: View {
                             .tint(.indigo)
                             
                             Button(role: .destructive) {
-                                print("Deleting conversation")
+                                print("Delete \(each)")
+                                
+                                vm.delAlarm(each)
+                                
                             } label: {
                                 Label("Delete", systemImage: "trash.fill")
                             }
@@ -50,7 +54,7 @@ struct AlarmView: View {
                 
                 
                 .sheet(isPresented: $showInputView) {
-                    print ("dismiss")
+                    print ("dismiss from edit")
                     print ("vm.alarmList[\(modifyIdx)] = \(vm.alarmList[modifyIdx])")
                     print ("myEditAm = \(myEditAm)")
                     vm.alarmList[modifyIdx] = myEditAm
@@ -59,16 +63,36 @@ struct AlarmView: View {
                 } content: {
                     
 //                    AlarmEditView(am: $vm.alarmList[modifyIdx]  ,showInputView: $showInputView)
-                    AlarmEditView(am: $myEditAm  ,showInputView: $showInputView)
+                    AlarmEditView(am: $myEditAm  ,showInputView: $showInputView, modifyMode: true)
                     
                 }
+                .sheet(isPresented: $showAddView) {
+                    print ("dismiss from add")
+                    print ("add new alarm")
+                    print ("myEditAm = \(myEditAm)")
+                    vm.addAlarm(myEditAm)
+                } content: {
+                    AlarmEditView(am: $myEditAm  ,showInputView: $showInputView,modifyMode: false)
+                }
+
                 
             }
             .onAppear{
                 vm.loadAlarms()
                 
             }
-            .navigationTitle(Text("Alarm View N"))
+            .navigationTitle(Text("Alarm View"))
+            
+            .toolbar {
+                Button {
+                    print ("add")
+                    showAddView.toggle()
+                } label: {
+                    Image(systemName: "plus.circle")
+                }
+
+            }
+            
         }
         
     }

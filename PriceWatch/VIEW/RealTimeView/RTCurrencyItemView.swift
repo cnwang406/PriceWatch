@@ -32,11 +32,14 @@ struct RTCurrencyItemView: View {
                 .opacity(cur.isBaseDollar ? 1.0 : 0.5)
 
             Spacer()
-            Text(" \(cur.money.formatted(.currency(code: cur.name.rawValue).rounded(rule: .awayFromZero, increment: 0.01)))")
+//            Text(" \(cur.money.formatted(.currencc myFormat(digit: 4))")
+            Text(" \(cur.money.formatted(.currency(code: cur.name.rawValue).rounded(rule: .awayFromZero, increment: 0.001)))")
+            
                     .foregroundColor(editable ? .green : (cur.vaildate ? .primary : .gray.opacity(0.5)))
                     .font(.title)
                     .multilineTextAlignment(.trailing)
                     .padding(.trailing,20)
+                    .animation(.easeIn, value: cur.money)
 
                 
         }
