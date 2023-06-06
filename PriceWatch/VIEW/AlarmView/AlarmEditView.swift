@@ -17,7 +17,7 @@ struct AlarmEditView: View {
     @State var status: AlarmStatus = .tooLow
     @State var drawDot:Bool = false
     @State var selectDollar: Dollars = .TWD
-    
+    var watchList: [Dollars] = []
     var vm = AlarmViewModel.share
     var dm = CurrencyModel.share
     //MARK: - VIEW
@@ -27,7 +27,7 @@ struct AlarmEditView: View {
                 VStack(spacing: 20){
                     Picker("Dollars", selection: $selectDollar) {
                         ForEach(Dollars.allCases, id:\.self){dollar in
-                            if !vm.watchList.contains( dollar) {
+                            if !watchList.contains( dollar) {
                                 Text("\(dollar.rawValue)")
                             }
                                
@@ -125,6 +125,7 @@ struct AlarmEditView: View {
                 .navigationTitle(modifyMode ? "Edit Alarm" : "Add Alarm")
                 .onAppear{
                     print ("AlarmEditView appear")
+                    print ("watchList = \(vm.watchList)")
                     if modifyMode {
                     editAm = am
                         selectDollar = am.dollar

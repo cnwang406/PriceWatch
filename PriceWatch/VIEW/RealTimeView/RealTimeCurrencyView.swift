@@ -20,93 +20,105 @@ struct RealTimeCurrencyView: View {
     
     @State private var scaleFactor: Double = 1.0
     static let numberFormat: NumberFormatter =  {
-           let numberFormatter = NumberFormatter()
-           numberFormatter.numberStyle = .none
-           numberFormatter.positivePrefix = "+"
-           numberFormatter.negativePrefix = "-"
-           return numberFormatter
-       }()
-
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .none
+        numberFormatter.positivePrefix = "+"
+        numberFormatter.negativePrefix = "-"
+        return numberFormatter
+    }()
+    
     //MARK: - VIEW
     var body: some View {
-        ZStack{
-            if vm.dm.loading {
-                VStack{
+        NavigationStack {
+            ZStack{
+                if vm.dm.loading {
+                    VStack{
                         Text("Loading")
-                    ProgressView()
-                        .scaleEffect(3.0)
+                        ProgressView()
+                            .scaleEffect(3.0)
+                    }
                 }
-            }
-            NavigationStack{
+                VStack{
                     
-
-                HStack{
-                    Image(vm.basedDollar?.rawValue ?? "TWD")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30)
-                        .padding(.trailing,20)
-                    Text("1 \(vm.basedDollar?.rawValue ?? "TWD") = ?foriegn dollars ")
-                }
-                List {
-                    ForEach (vm.currency) { cur in
-                        let isSelected = vm.getIsBaseDollar(dollar: cur.name)
-                        RTCurrencyItemView(cur: cur, editable: false)
-                        .padding(.horizontal,3)
-                        .multilineTextAlignment(.leading)
-                        .scaleEffect(cur.isBaseDollar ? 1.1 : 1.0)
-                        .onTapGesture {
-                            if vm.basedDollar == cur.name {
-                                self.showInputView.toggle()
-                            } else {
-                                playFeedbackHaptic(.light)
-                                vm.setBaseDollar(cur.name)
-                                vm.baseRate = cur.rate
-                                vm.edit(CheckCurrency: cur)
-                            }
-                        }
-                        .animation(.interactiveSpring(response: 1, dampingFraction: 0.51604, blendDuration: 0.48244 ), value: isSelected)
-                        .onSubmit {
-                            print ("CurrecnyView submit \(cur.rate)")
+                    
+                    HStack{
+                        Image(vm.basedDollar?.rawValue ?? "TWD")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30)
+                            .padding(.trailing,20)
+                        Text("1 \(vm.basedDollar?.rawValue ?? "TWD") = ?foriegn dollars ")
+                    }
+                    List {
+                        ForEach (vm.currency) { cur in
+                            let isSelected = vm.getIsBaseDollar(dollar: cur.name)
+                            RTCurrencyItemView(cur: cur, editable: false)
+                                .padding(.horizontal,3)
+                                .multilineTextAlignment(.leading)
+                                .scaleEffect(cur.isBaseDollar ? 1.1 : 1.0)
+                                .onTapGesture {
+                                    if vm.basedDollar == cur.name {
+                                        self.showInputView.toggle()
+                                    } else {
+                                        playFeedbackHaptic(.light)
+                                        vm.setBaseDollar(cur.name)
+                                        vm.baseRate = cur.rate
+                                        vm.edit(CheckCurrency: cur)
+                                    }
+                                }
+                                .animation(.interactiveSpring(response: 1, dampingFraction: 0.51604, blendDuration: 0.48244 ), value: isSelected)
+                                .onSubmit {
+                                    print ("CurrecnyView submit \(cur.rate)")
+                                    
+                                    
+                                }
                             
-                            
                         }
+                    }
+                    
+                    
+                    
+                    Spacer()
+                    Text("Latest update \(Date(timeIntervalSince1970: vm.dm.latestUpdate))")
+                        .font(.footnote).opacity(0.3)
+                    
                         
-                    }
-                }
-    
-                
-                
-                Spacer()
-                Text("Latest update \(Date(timeIntervalSince1970: vm.dm.latestUpdate))")
-                    .font(.footnote).opacity(0.3)
                     
-                    .navigationTitle(Text("RealTime Xchg(\(vm.dm.rtCurrencies.count))"))
-
-                    .onTapGesture {
-                        vm.dump()
-                    }
+                        .onTapGesture {
+                            vm.dump()
+                        }
+                }
+                
+                
             }
+            .sheet(isPresented: $showInputView, onDismiss: {
+                print ("new value : \(moneyInput) for \(vm.basedDollar?.rawValue ?? "")")
+                vm.baseMoney = moneyInput
+                vm.calculate()
+            }, content: {
+                InputMoneyView(money: $moneyInput, showInputView: $showInputView)
+                    .presentationDetents([.medium,.fraction(0.3)])
+                //                .presentationDragIndicator(.hidden)
+            })
             
-            
-        }
-        .sheet(isPresented: $showInputView, onDismiss: {
-            print ("new value : \(moneyInput) for \(vm.basedDollar?.rawValue ?? "")")
-            vm.baseMoney = moneyInput
-            vm.calculate()
-        }, content: {
-            InputMoneyView(money: $moneyInput, showInputView: $showInputView)
-                .presentationDetents([.medium,.fraction(0.3)])
-//                .presentationDragIndicator(.hidden)
-        })
-            
-        .padding()
-        .task {
-            await vm.reload()
-            playFeedbackHaptic(.light)
-        }
-        .refreshable {
-            await vm.reload()
+            .padding()
+            .task {
+                await vm.reload()
+                playFeedbackHaptic(.light)
+            }
+            .refreshable {
+                await vm.reload()
+            }
+            .navigationTitle(Text("Real time XRate"))
+            .navigationBarTitleDisplayMode(.automatic)
+            .toolbar {
+                Button {
+                    print ("Select")
+                } label: {
+                    Image(systemName: "list.bullet")
+                }
+
+            }
         }
     }
 }

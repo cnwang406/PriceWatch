@@ -72,14 +72,15 @@ struct AlarmView: View {
                     print ("myEditAm = \(myEditAm)")
                     vm.addAlarm(myEditAm)
                 } content: {
-                    AlarmEditView(am: $myEditAm  ,showInputView: $showInputView,modifyMode: false)
+                    AlarmEditView(am: $myEditAm  ,showInputView: $showAddView,modifyMode: false, watchList: vm.watchList)
                 }
 
                 
             }
             .onAppear{
-                vm.loadAlarms()
                 
+                vm.loadAlarms()
+                print ("AlarmViewModel after loadAlarms, watchList = \(vm.watchList)")
             }
             .navigationTitle(Text("Alarm View"))
             
