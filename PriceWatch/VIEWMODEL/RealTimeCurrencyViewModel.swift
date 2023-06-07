@@ -28,6 +28,7 @@ class RealTimeCurrencyViewModel: ObservableObject {
             basedDollar = .TWD
         }
         dm.baseDollar = basedDollar!
+        dm.load()
         await dm.reload(fetchType: .realtime)
         self.currencies = dm.rtCurrencies
         self.apiCurrencies = dm.apiCurrencies

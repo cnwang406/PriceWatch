@@ -13,7 +13,12 @@ struct RTSelectCurrencyView: View {
     
     //MARK: - VIEW
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List{
+            
+            ForEach(AllDollars.allCases, id:\.self){ dollar in
+                Text("\(dollar.rawValue)")
+            }
+        }
     }
 }
 

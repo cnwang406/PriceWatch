@@ -174,15 +174,17 @@ class CurrencyModel: ObservableObject {
         }
 
     }
-    func load() -> [MyCurrencyModel]{
+    func load() {
         var ret : [MyCurrencyModel] = []
         if let decodedData = UserDefaults.standard.object(forKey: "currency") as? Data {
             if let userDetails = try? JSONDecoder().decode([MyCurrencyModel].self, from: decodedData) {
                ret = userDetails
           }
         }
-        return ret
+//        return ret
+        self.currency = ret
     }
+    
 }
 
 
