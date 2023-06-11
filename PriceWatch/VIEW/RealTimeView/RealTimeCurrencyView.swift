@@ -119,6 +119,9 @@ struct RealTimeCurrencyView: View {
                 }
 
             }
+            .onAppear{
+                vm.dm.load()
+            }
         }
     }
 }

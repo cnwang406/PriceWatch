@@ -53,28 +53,38 @@ struct AlarmView: View {
                 }
                 
                 
-                .sheet(isPresented: $showInputView) {
-                    print ("dismiss from edit")
-                    print ("vm.alarmList[\(modifyIdx)] = \(vm.alarmList[modifyIdx])")
-                    print ("myEditAm = \(myEditAm)")
-                    vm.alarmList[modifyIdx] = myEditAm
-                    print ("after assign, vm.alarmList[\(modifyIdx)] = \(vm.alarmList[modifyIdx])")
-                    vm.save()
-                } content: {
-                    
-//                    AlarmEditView(am: $vm.alarmList[modifyIdx]  ,showInputView: $showInputView)
-                    AlarmEditView(am: $myEditAm  ,showInputView: $showInputView, modifyMode: true)
-                    
-                }
-                .sheet(isPresented: $showAddView) {
-                    print ("dismiss from add")
-                    print ("add new alarm")
-                    print ("myEditAm = \(myEditAm)")
-                    vm.addAlarm(myEditAm)
-                } content: {
-                    AlarmEditView(am: $myEditAm  ,showInputView: $showAddView,modifyMode: false, watchList: vm.watchList)
-                }
 
+                
+            }
+            .sheet(isPresented: $showInputView) {
+                print ("dismiss from edit")
+                print ("vm.alarmList[\(modifyIdx)] = \(vm.alarmList[modifyIdx])")
+                print ("myEditAm = \(myEditAm)")
+                vm.alarmList[modifyIdx] = myEditAm
+                print ("after assign, vm.alarmList[\(modifyIdx)] = \(vm.alarmList[modifyIdx])")
+                vm.save()
+            } content: {
+                
+                //                    AlarmEditView(am: $vm.alarmList[modifyIdx]  ,showInputView: $showInputView)
+                AlarmEditView(am: $myEditAm  ,showInputView: $showInputView, modifyMode: true)
+                
+            }
+            .sheet(isPresented: $showAddView) {
+                print ("dismiss from add")
+                print ("add new alarm")
+                print ("myEditAm = \(myEditAm)")
+                vm.addAlarm(myEditAm)
+            } content: {
+                AlarmEditView(am: $myEditAm  ,showInputView: $showAddView,modifyMode: false, watchList: vm.watchList)
+            }
+            .toolbar {
+                Button {
+                    showAddView = true
+                    print ("add, \(showAddView)")
+                    
+                } label: {
+                    Image(systemName: "plus.circle")
+                }
                 
             }
             .onAppear{
@@ -84,15 +94,7 @@ struct AlarmView: View {
             }
             .navigationTitle(Text("Alarm View"))
             
-            .toolbar {
-                Button {
-                    print ("add")
-                    showAddView.toggle()
-                } label: {
-                    Image(systemName: "plus.circle")
-                }
-
-            }
+            
             
         }
         
