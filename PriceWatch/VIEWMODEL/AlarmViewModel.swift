@@ -11,15 +11,25 @@ import SwiftUI
 class AlarmViewModel: ObservableObject {
 //    @Published var watchList:[Dollars] = [.USD,.AUD,.JPY,.ZAR]
     @Published var watchList:[Dollars] = []
+    @Published var nonWatchList: [Dollars] = []
     @Published var alarmList: [AlarmModel] = []
     var dm = CurrencyModel.share
     static var share = AlarmViewModel()
     func loadAlarms(){
         alarmList = load()
+       
+//        for al in alarmList {
+//            watchList.append(al.dollar)
+//        }
         
-        for al in alarmList {
-            watchList.append(al.dollar)
+        for al in Dollars.allCases {
+            if watchList.contains(al) {
+                nonWatchList.append(al)
+            } else {
+                watchList.append(al)
+            }
         }
+       
         print ("AlarmViewModel : load \(watchList) as watchList")
         if alarmList == [] {
 
@@ -33,8 +43,10 @@ class AlarmViewModel: ObservableObject {
             UserDefaults.standard.set(encodedUserDetails, forKey: "alarmlist")
         }
         print ("AlarmList saved")
-        
+        loadAlarms()    // to refresh watchlist
     }
+    
+    
     func load() -> [AlarmModel]{
         var ret : [AlarmModel] = []
         if let decodedData = UserDefaults.standard.object(forKey: "alarmlist") as? Data {

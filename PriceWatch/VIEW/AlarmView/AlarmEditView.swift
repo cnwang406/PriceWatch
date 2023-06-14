@@ -26,11 +26,14 @@ struct AlarmEditView: View {
             ScrollView {
                 VStack(spacing: 20){
                     Picker("Dollars", selection: $selectDollar) {
-                        ForEach(Dollars.allCases, id:\.self){dollar in
-                            if !watchList.contains( dollar) {
-                                Text("\(dollar.rawValue)")
-                            }
-                               
+//                        ForEach(Dollars.allCases, id:\.self){dollar in
+//                            if !watchList.contains( dollar) {
+//                                Text("\(dollar.rawValue)")
+//                            }
+//
+//                        }
+                        ForEach(vm.nonWatchList, id:\.self) { dollar in
+                            Text("\(dollar.rawValue)")
                         }
                         
                     }
@@ -125,14 +128,16 @@ struct AlarmEditView: View {
                 .navigationTitle(modifyMode ? "Edit Alarm" : "Add Alarm")
                 .onAppear{
                     print ("AlarmEditView appear")
+                    print ("AlarmList = \(vm.alarmList)")
                     print ("watchList = \(vm.watchList)")
+                    print ("nonWatchlist = \(vm.nonWatchList)")
                     if modifyMode {
                     editAm = am
                         selectDollar = am.dollar
                     } else { // new. empty one
                         let rate = dm.getXRate(dollar: .TWD)
                         editAm = AlarmModel( dollar: .TWD, low: rate * 0.9, high: rate * 1.1, rate: rate, buy: rate, activate: true)
-                        
+                        selectDollar = vm.nonWatchList.first ?? .TWD
                         
                     }
 //                    selectDollar = .GBP
