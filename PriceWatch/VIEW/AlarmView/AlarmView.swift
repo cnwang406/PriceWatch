@@ -73,9 +73,11 @@ struct AlarmView: View {
                 print ("dismiss from add")
                 print ("add new alarm")
                 print ("myEditAm = \(myEditAm)")
-                vm.addAlarm(myEditAm)
+                if myEditAm.rate > 0 {
+                    vm.addAlarm(myEditAm)
+                }
             } content: {
-                AlarmEditView(am: $myEditAm  ,showInputView: $showAddView,modifyMode: false, watchList: vm.watchList)
+                AlarmEditView(am: $myEditAm  ,showInputView: $showAddView,modifyMode: false, watchList: vm.alarmSet)
             }
             .toolbar {
                 Button {

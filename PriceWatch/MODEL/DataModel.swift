@@ -58,7 +58,7 @@ enum DataType: String {
     
 }
 
-enum Dollars: String, CaseIterable, Codable  {
+enum Dollars: String, CaseIterable, Codable,Hashable  {
     case TWD = "TWD"
     case USD = "USD"
     case JPY = "JPY"
@@ -70,6 +70,16 @@ enum Dollars: String, CaseIterable, Codable  {
     case CNY = "CNY"
     
 }
+
+func str2Dollar(fromStr: String) -> Dollars?{
+    for dollar in Dollars.allCases {
+        if fromStr == dollar.rawValue {
+            return dollar
+        }
+    }
+    return nil
+}
+
 
 struct MyCurrencyModel: Identifiable, Codable {
     var id = UUID()

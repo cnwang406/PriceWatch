@@ -15,20 +15,17 @@ class AlarmViewModel: ObservableObject {
     @Published var alarmList: [AlarmModel] = []
     var dm = CurrencyModel.share
     static var share = AlarmViewModel()
+    var alarmSet: Set<String> = []
     func loadAlarms(){
         alarmList = load()
        
-//        for al in alarmList {
-//            watchList.append(al.dollar)
-//        }
+
         
-        for al in Dollars.allCases {
-            if watchList.contains(al) {
-                nonWatchList.append(al)
-            } else {
-                watchList.append(al)
-            }
+        for al in alarmList {
+            alarmSet.insert(al.dollar.rawValue)
+            
         }
+
        
         print ("AlarmViewModel : load \(watchList) as watchList")
         if alarmList == [] {
@@ -60,6 +57,7 @@ class AlarmViewModel: ObservableObject {
         print ("add \(am.dollar)")
         self.alarmList.append(am)
         self.save()
+        self.loadAlarms()
     }
     
     func delAlarm(_ am: AlarmModel){
@@ -76,6 +74,7 @@ class AlarmViewModel: ObservableObject {
         
         print ("after delete, alarmList = \(alarmList)")
         self.save()
+        self.loadAlarms()
     }
     
 }

@@ -17,7 +17,8 @@ struct AlarmEditView: View {
     @State var status: AlarmStatus = .tooLow
     @State var drawDot:Bool = false
     @State var selectDollar: Dollars = .TWD
-    var watchList: [Dollars] = []
+//    var watchList: [Dollars] = []
+    var watchList: Set<String> = []
     var vm = AlarmViewModel.share
     var dm = CurrencyModel.share
     //MARK: - VIEW
@@ -26,24 +27,30 @@ struct AlarmEditView: View {
             ScrollView {
                 VStack(spacing: 20){
                     Picker("Dollars", selection: $selectDollar) {
-//                        ForEach(Dollars.allCases, id:\.self){dollar in
-//                            if !watchList.contains( dollar) {
-//                                Text("\(dollar.rawValue)")
-//                            }
-//
-//                        }
-                        ForEach(vm.nonWatchList, id:\.self) { dollar in
-                            Text("\(dollar.rawValue)")
+
+                        ForEach(Dollars.allCases, id:\.self) { dollar in
+                            if !watchList.contains(dollar.rawValue) {
+                                Text("\(dollar.rawValue)")
+                            }
                         }
                         
                     }
                     .onChange(of: selectDollar, perform: { newValue in
+                        print ("Picker onChange")
                         editAm.dollar = selectDollar
                         editAm.rate = dm.getXRate(dollar: selectDollar)
                         editAm.low = editAm.rate * 0.9
                         editAm.high = editAm.rate * 1.1
                         editAm.buy = editAm.rate
                     })
+                    .onAppear{
+                        print ("Picker onAppear")
+                        editAm.dollar = selectDollar
+                        editAm.rate = dm.getXRate(dollar: selectDollar)
+                        editAm.low = editAm.rate * 0.9
+                        editAm.high = editAm.rate * 1.1
+                        editAm.buy = editAm.rate
+                    }
                     .disabled(modifyMode)
                     .opacity(modifyMode ? 0 : 1.0)
 
@@ -128,16 +135,25 @@ struct AlarmEditView: View {
                 .navigationTitle(modifyMode ? "Edit Alarm" : "Add Alarm")
                 .onAppear{
                     print ("AlarmEditView appear")
-                    print ("AlarmList = \(vm.alarmList)")
-                    print ("watchList = \(vm.watchList)")
-                    print ("nonWatchlist = \(vm.nonWatchList)")
+
                     if modifyMode {
-                    editAm = am
+                        editAm = am
                         selectDollar = am.dollar
                     } else { // new. empty one
                         let rate = dm.getXRate(dollar: .TWD)
                         editAm = AlarmModel( dollar: .TWD, low: rate * 0.9, high: rate * 1.1, rate: rate, buy: rate, activate: true)
-                        selectDollar = vm.nonWatchList.first ?? .TWD
+                        var dollarSet : Set<String> = []
+                        for dollar in Dollars.allCases {
+                            dollarSet.insert(dollar.rawValue)
+                        }
+                        var remainDollar = dollarSet.subtracting(watchList)
+                        if remainDollar.count == 0 {
+                            am.rate = -1.0
+                            showInputView = false
+                        } else {
+                            selectDollar = str2Dollar(fromStr: remainDollar.first!) ?? .TWD
+                        }
+                        am.rate = -1.0
                         
                     }
 //                    selectDollar = .GBP
