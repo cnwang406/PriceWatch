@@ -33,7 +33,7 @@ struct AlarmView: View {
                                 print (vm.alarmList[idx])
                                 showInputView.toggle()
                             } label: {
-                                Label("Edit\(vm.alarmList[idx].dollar.rawValue)\(idx)", systemImage: "pencil")
+                                Label("Edit", systemImage: "pencil")
                             }
                             .tint(.indigo)
                             
@@ -51,9 +51,6 @@ struct AlarmView: View {
                 .onMove { IndexSet, Int in
                     print ("move \(IndexSet), \(Int)")
                 }
-                
-                
-
                 
             }
             .sheet(isPresented: $showInputView) {
@@ -81,18 +78,21 @@ struct AlarmView: View {
             }
             .toolbar {
                 Button {
-                    showAddView = true
-                    print ("add, \(showAddView)")
+                    if vm.nonAlarmSet.count > 0 {
+                        showAddView = true
+                        print ("add, \(showAddView)")
+                    }
                     
                 } label: {
                     Image(systemName: "plus.circle")
+                        .disabled(vm.nonAlarmSet.count == 0)
                 }
                 
             }
             .onAppear{
                 
                 vm.loadAlarms()
-                print ("AlarmViewModel after loadAlarms, watchList = \(vm.watchList)")
+                print ("AlarmViewModel after loadAlarms, watchList = \(vm.alarmSet)")
             }
             .navigationTitle(Text("Alarm View"))
             

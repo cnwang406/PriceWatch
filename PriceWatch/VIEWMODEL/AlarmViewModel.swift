@@ -11,30 +11,31 @@ import SwiftUI
 class AlarmViewModel: ObservableObject {
 //    @Published var watchList:[Dollars] = [.USD,.AUD,.JPY,.ZAR]
     @Published var watchList:[Dollars] = []
-    @Published var nonWatchList: [Dollars] = []
-    @Published var alarmList: [AlarmModel] = []
+
+    @Published var alarmList: [AlarmModel] = [] // store in userdefault
     var dm = CurrencyModel.share
     static var share = AlarmViewModel()
-    var alarmSet: Set<String> = []
+    @Published var alarmSet: Set<String> = []
+    @Published var nonAlarmSet: Set<String> = []
     func loadAlarms(){
         alarmList = load()
-       
-
+       alarmSet = []
+        nonAlarmSet = []
+        for al in Dollars.allCases {
+            nonAlarmSet.insert(al.rawValue)
+        }
         
         for al in alarmList {
             alarmSet.insert(al.dollar.rawValue)
-            
+            nonAlarmSet.remove(al.dollar.rawValue)
         }
 
-       
         print ("AlarmViewModel : load \(watchList) as watchList")
         if alarmList == [] {
 
-            
         }
     }
     func save() {
-        //stock = UserDefaults(suiteName: groupIdentifier)?.string(forKey: "stock") ?? "聯穎光電"
         
         if let encodedUserDetails = try? JSONEncoder().encode(self.alarmList) {
             UserDefaults.standard.set(encodedUserDetails, forKey: "alarmlist")

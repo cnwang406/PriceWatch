@@ -57,7 +57,7 @@ struct AlarmEditView: View {
                     .padding(.bottom,0)
                     
                     
-                    Gauge(value: (am.rate - am.low) / (am.high - am.low)) {
+                    Gauge(value: (editAm.rate - editAm.low) / (editAm.high - editAm.low)) {
                         Text(editAm.dollar.rawValue)
                     } currentValueLabel: {
                         Text("\(editAm.rate.formatted(.number.rounded(rule: .awayFromZero, increment: 0.1)))")

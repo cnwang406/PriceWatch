@@ -48,6 +48,7 @@ struct AlarmItemView: View {
             } markedValueLabels: {
                 Text("haaa")
             }
+            
 //            .tint(statusColor(status: status))
             .tint(alarmGaugeGradient)
             .gaugeStyle(.accessoryCircular)
