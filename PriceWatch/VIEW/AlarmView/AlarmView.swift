@@ -77,16 +77,29 @@ struct AlarmView: View {
                 AlarmEditView(am: $myEditAm  ,showInputView: $showAddView,modifyMode: false, watchList: vm.alarmSet)
             }
             .toolbar {
-                Button {
-                    if vm.nonAlarmSet.count > 0 {
-                        showAddView = true
-                        print ("add, \(showAddView)")
+                ToolbarItem(placement: .navigationBarLeading) {
+                    
+                    Button {
+                        print ("go check")
+                    } label: {
+                        Image(systemName: "eye")
                     }
                     
-                } label: {
-                    Image(systemName: "plus.circle")
-                        .disabled(vm.nonAlarmSet.count == 0)
                 }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    
+                    Button {
+                        if vm.nonAlarmSet.count > 0 {
+                            showAddView = true
+                            print ("add, \(showAddView)")
+                        }
+                        
+                    } label: {
+                        Image(systemName: "plus.circle")
+                            .disabled(vm.nonAlarmSet.count == 0)
+                    }
+                }
+
                 
             }
             .onAppear{

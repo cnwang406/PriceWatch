@@ -79,10 +79,12 @@ class AlarmViewModel: ObservableObject {
     }
     
     func checkAlarmList(){
-        for al in alarmList {
-    
-            
-            
+        for idx in (alarmList.indices) {
+            var al = alarmList[idx]
+            let rate = dm.getXRate(dollar: al.dollar)
+            print ("rate = \(rate), al.high/buy/low = \(al.high), \(al.buy), \(al.low)")
+            al.tooHigh = rate >= al.high
+            al.tooLow = rate <= al.low
             
         }
     }
