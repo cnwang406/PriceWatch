@@ -51,6 +51,8 @@ struct AlarmModel: Identifiable, Hashable,Codable{
     var rate : Double = 0.0
     var buy : Double = 0.0
     var activate: Bool = false
+    var tooLow: Bool = false
+    var tooHigh: Bool = false
     
 }
 

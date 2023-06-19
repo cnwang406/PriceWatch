@@ -78,6 +78,15 @@ class AlarmViewModel: ObservableObject {
         self.loadAlarms()
     }
     
+    func checkAlarmList(){
+        for al in alarmList {
+    
+            
+            
+            
+        }
+    }
+    
 }
 
 
