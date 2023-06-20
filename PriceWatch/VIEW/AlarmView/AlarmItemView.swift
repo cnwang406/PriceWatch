@@ -32,11 +32,8 @@ struct AlarmItemView: View {
                 .frame(width: 40)
             Gauge(value: (item.rate - item.low) / (item.high - item.low)) {
                 Text(item.dollar.rawValue)
-                    
             } currentValueLabel: {
-
                 Text("\(item.rate.myFormat(digit: 4))")
-               
                     .foregroundColor(statusColor(status: status))
                     .font(.caption)
             } minimumValueLabel: {
@@ -48,25 +45,22 @@ struct AlarmItemView: View {
             } markedValueLabels: {
                 Text("haaa")
             }
-            
-//            .tint(statusColor(status: status))
             .tint(alarmGaugeGradient)
             .gaugeStyle(.accessoryCircular)
-//            .background(.pink)
             .scaleEffect(2)
             .animation(.easeIn(duration: 2.5), value: drawDot)
             .frame(width: 160)
+            Spacer()
             VStack{
                 Image(systemName: "circle.fill")
-                    .foregroundColor(.green)
+                    .foregroundColor(.red)
                     .opacity(item.tooLow ? 1.0 : 0.1)
                 Image(systemName: "circle.fill")
-                    .foregroundColor(.red)
+                    .foregroundColor(.green)
                     .opacity(item.tooHigh ? 1.0 : 0.1)
             }
             
         }
-        .background(item.tooLow ? .red.opacity(0.3) : (item.tooHigh ? .green.opacity(0.3) : .secondary.opacity(0)))
         .frame(height:160)
         .onAppear {
             
@@ -76,6 +70,8 @@ struct AlarmItemView: View {
             
             
         }
+        .background(item.tooLow ? .red.opacity(0.3) : (item.tooHigh ? .green.opacity(0.3) : .secondary.opacity(0)))
+        .padding(0)
     }
     
 //    func roundTo(number : Double, digit: Int) -> Double {

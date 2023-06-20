@@ -17,7 +17,11 @@ class AlarmViewModel: ObservableObject {
     static var share = AlarmViewModel()
     @Published var alarmSet: Set<String> = []
     @Published var nonAlarmSet: Set<String> = []
+    @Published var loading: Bool = false
+    
+    
     func loadAlarms(){
+        loading = true
         alarmList = load()
        alarmSet = []
         nonAlarmSet = []
@@ -34,6 +38,7 @@ class AlarmViewModel: ObservableObject {
         if alarmList == [] {
 
         }
+        loading = false
     }
     func save() {
         
@@ -79,14 +84,20 @@ class AlarmViewModel: ObservableObject {
     }
     
     func checkAlarmList(){
+        loading = true
+        dm.load()
+        
         for idx in (alarmList.indices) {
             var al = alarmList[idx]
             let rate = dm.getXRate(dollar: al.dollar)
-            al.tooHigh = rate >= al.high
-            al.tooLow = rate <= al.low
+            alarmList[idx].tooHigh = rate >= al.high
+            alarmList[idx].tooLow = rate <= al.low
             print ("rate = \(rate), al.high/buy/low = \(al.high), \(al.buy), \(al.low), tooHigh/tooLow = \(al.tooHigh),\(al.tooLow)")
             
         }
+        self.save()
+        self.loadAlarms()
+        loading = false
     }
     
 }
