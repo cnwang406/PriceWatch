@@ -56,8 +56,17 @@ struct AlarmItemView: View {
             .scaleEffect(2)
             .animation(.easeIn(duration: 2.5), value: drawDot)
             .frame(width: 160)
+            VStack{
+                Image(systemName: "circle.fill")
+                    .foregroundColor(.green)
+                    .opacity(item.tooLow ? 1.0 : 0.1)
+                Image(systemName: "circle.fill")
+                    .foregroundColor(.red)
+                    .opacity(item.tooHigh ? 1.0 : 0.1)
+            }
             
         }
+        .background(item.tooLow ? .red.opacity(0.3) : (item.tooHigh ? .green.opacity(0.3) : .secondary.opacity(0)))
         .frame(height:160)
         .onAppear {
             

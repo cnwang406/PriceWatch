@@ -58,7 +58,7 @@ struct AlarmModel: Identifiable, Hashable,Codable{
 
 var demoAlarmModel = AlarmModel(dollar: .USD, low: 27.0, high: 33.0, rate: 31.2, buy: 30.0, activate: true)
 var demoAlarmModelL = AlarmModel(dollar: .AUD, low: 25.0, high: 30.0, rate: 24.3,buy: 27.0, activate: true)
-var demoAlarmModelLL = AlarmModel(dollar: .AUD, low: 25.0, high: 30.0, rate: 20.3,buy: 27.0, activate: true)
+var demoAlarmModelLL = AlarmModel(dollar: .AUD, low: 25.0, high: 30.0, rate: 20.3,buy: 27.0, activate: true, tooLow: true, tooHigh: false)
 var demoAlarmModelH = AlarmModel(dollar: .ZAR, low: 20.0, high: 25.0, rate: 27.2,buy: 22.0, activate: true)
-var demoAlarmModelHH = AlarmModel(dollar: .ZAR, low: 20.0, high: 25.0, rate: 37.2,buy: 22.0, activate: true)
+var demoAlarmModelHH = AlarmModel(dollar: .ZAR, low: 20.0, high: 25.0, rate: 37.2,buy: 22.0, activate: true, tooLow: false, tooHigh: true)
 var demoAlarmModelNotExist = AlarmModel(dollar: .CNY, low: 20.0, high: 25.0, rate: 37.2,buy: 22.0, activate: true)

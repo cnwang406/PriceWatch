@@ -23,29 +23,32 @@ struct AlarmView: View {
             List{
                 ForEach(vm.alarmList.indices, id:\.self) { idx in
                     let each = vm.alarmList[idx]
-                    AlarmItemView(item: each)
-                        .swipeActions(allowsFullSwipe: false) {
-                            Button {
-                                print("edit alarm \(vm.alarmList[idx].dollar.rawValue) ")
-                                myEditAm = each
-                                modifyIdx = idx
-                                print ("before edit")
-                                print (vm.alarmList[idx])
-                                showInputView.toggle()
-                            } label: {
-                                Label("Edit", systemImage: "pencil")
-                            }
-                            .tint(.indigo)
-                            
-                            Button(role: .destructive) {
-                                print("Delete \(each)")
+                    HStack{
+                        AlarmItemView(item: each)
+                            .swipeActions(allowsFullSwipe: false) {
+                                Button {
+                                    print("edit alarm \(vm.alarmList[idx].dollar.rawValue) ")
+                                    myEditAm = each
+                                    modifyIdx = idx
+                                    print ("before edit")
+                                    print (vm.alarmList[idx])
+                                    showInputView.toggle()
+                                } label: {
+                                    Label("Edit", systemImage: "pencil")
+                                }
+                                .tint(.indigo)
                                 
-                                vm.delAlarm(each)
-                                
-                            } label: {
-                                Label("Delete", systemImage: "trash.fill")
+                                Button(role: .destructive) {
+                                    print("Delete \(each)")
+                                    
+                                    vm.delAlarm(each)
+                                    
+                                } label: {
+                                    Label("Delete", systemImage: "trash.fill")
+                                }
                             }
-                        }
+                        Text("\(each.tooLow ? "T":"F") \(each.tooHigh ? "T": "F")")
+                    }
                     
                 }
                 .onMove { IndexSet, Int in
@@ -53,6 +56,7 @@ struct AlarmView: View {
                 }
                 
             }
+            
             .sheet(isPresented: $showInputView) {
                 print ("dismiss from edit")
                 print ("vm.alarmList[\(modifyIdx)] = \(vm.alarmList[modifyIdx])")
@@ -80,7 +84,7 @@ struct AlarmView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     
                     Button {
-                        print ("go check")
+                        vm.checkAlarmList()
                     } label: {
                         Image(systemName: "eye")
                     }
@@ -106,6 +110,12 @@ struct AlarmView: View {
                 
                 vm.loadAlarms()
                 print ("AlarmViewModel after loadAlarms, watchList = \(vm.alarmSet)")
+                vm.checkAlarmList()
+            }
+            .refreshable {
+                vm.loadAlarms()
+                print ("AlarmViewModel refreshed watchList = \(vm.alarmSet)")
+                vm.checkAlarmList()
             }
             .navigationTitle(Text("Alarm View"))
             
