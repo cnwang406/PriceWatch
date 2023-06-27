@@ -105,10 +105,22 @@ class CurrencyModel: ObservableObject {
     @Published var currency: [MyCurrencyModel] = []
     @Published var baseDollar: Dollars = .TWD
     @Published var currency2: [MyCurrencyModel] = []
-//    @Published var baseXRate: Double = 1.0
-//    @Published var baseMoney : Double = 1.0
-    func reload(fetchType: DataType) async {
+
+    
+    func load(fetchType: DataType) async {
+        print ("CurrencyModel loading")
+        self.loading =  true
+        print ("CurrencyModel load from memory")
+        self.loadFromMemory()
+        print ("CurrencyModel await load from cloud")
+        await reloadFromCloud(fetchType: fetchType)
+        
+    }
+    
+    
+    func reloadFromCloud(fetchType: DataType) async {
         self.loading = true
+        print ("CurrencyModel.reloadFromCloud = \(self.loading)")
         let url = URL(string: "https://openapi.taifex.com.tw/v1/DailyForeignExchangeRates")!
         let url2 = URL(string: "https://tw.rter.info/capi.php")!
 //        let url3 = URL(string: apiLayerURL + "?base=TWD&symbols=CNY,EUR")!
@@ -120,16 +132,21 @@ class CurrencyModel: ObservableObject {
                 self.currencies = try JSONDecoder().decode([CurrencyElement].self, from: data).reversed()
                 latestUpdate = Date().timeIntervalSince1970
             } else {
-                let (data2, _) = try! await urlSession.data(from:url2)
+                let (data2, _) = try await urlSession.data(from:url2)
                 self.rtCurrencies = try JSONDecoder().decode(RTCurrency.self, from: data2)
                 latestUpdate = Date().timeIntervalSince1970
             }
             self.loading = false
         } catch {
-            print ("Error loading ")
+            print ("reloadFromCloud Error loading , [currency].count = \(self.currency.count)")
+//            self.loadFromMemory()
+            if self.currency.count == 0 {
+                self.initialCurrency()
+            }
             self.loading = false
         }
         parse()
+        print ("CurrencyModel.loading = \(self.loading)")
     }
     
     func parse(bdollar: Dollars = .TWD){
@@ -178,21 +195,42 @@ class CurrencyModel: ObservableObject {
     
     func save() {
         //stock = UserDefaults(suiteName: groupIdentifier)?.string(forKey: "stock") ?? "聯穎光電"
+        
         let userDefaults = UserDefaults.standard
         if let encodedUserDetails = try? JSONEncoder().encode(self.currency) {
            UserDefaults.standard.set(encodedUserDetails, forKey: "currency")
         }
 
     }
-    func load() {
+    func loadFromMemory() {
         var ret : [MyCurrencyModel] = []
+        print ("load from userdefault")
         if let decodedData = UserDefaults.standard.object(forKey: "currency") as? Data {
-            if let userDetails = try? JSONDecoder().decode([MyCurrencyModel].self, from: decodedData) {
-               ret = userDetails
-          }
+            
+                if let userDetails = try? JSONDecoder().decode([MyCurrencyModel].self, from: decodedData) {
+                    ret = userDetails
+                    self.currency = ret
+                }
+            
+            if self.currency.count == 0 {
+                print ("Fail to read userdefault")
+                print ("initialize a new one,and save")
+                self.initialCurrency()
+            }
         }
 //        return ret
         self.currency = ret
+    }
+    
+    func initialCurrency(){
+        var ret: [MyCurrencyModel] = []
+        print ("initialCurrency...")
+        for dollar in Dollars.allCases {
+            let newDollar = MyCurrencyModel(timestamp: Date().timeIntervalSince1970 - 86400.0, name: dollar, rate: 1.0, vaildate: false)
+            ret.append(newDollar)
+        }
+        self.currency = ret
+        self.save()
     }
     
 }

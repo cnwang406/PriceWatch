@@ -22,8 +22,9 @@ class AlarmViewModel: ObservableObject {
     
     func loadAlarms(){
         loading = true
+        
         alarmList = load()
-       alarmSet = []
+        alarmSet = []
         nonAlarmSet = []
         for al in Dollars.allCases {
             nonAlarmSet.insert(al.rawValue)
@@ -57,6 +58,7 @@ class AlarmViewModel: ObservableObject {
                 ret = userDetails
             }
         }
+        dm.loadFromMemory()
         return ret
     }
     func addAlarm(_ am: AlarmModel){
@@ -85,7 +87,7 @@ class AlarmViewModel: ObservableObject {
     
     func checkAlarmList(){
         loading = true
-        dm.load()
+        dm.loadFromMemory()
         
         for idx in (alarmList.indices) {
             var al = alarmList[idx]

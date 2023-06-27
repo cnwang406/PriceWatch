@@ -14,7 +14,7 @@ class DailyCurrencyViewModel: ObservableObject {
     @Published var loading: Bool = false
     func reload() async{
         loading = true
-        await dm.reload(fetchType: .daily)
+        await dm.reloadFromCloud(fetchType: .daily)
         self.currencies = dm.currencies
         loading = false
     }

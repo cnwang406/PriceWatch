@@ -85,7 +85,7 @@ struct AlarmView: View {
                     Button {
                         vm.checkAlarmList()
                     } label: {
-                        Image(systemName: vm.loading ? "eye" : "eye.fill")
+                        Image(systemName: vm.dm.loading ? "eye" : "eye.fill")
                     }
                     
                 }
@@ -112,8 +112,8 @@ struct AlarmView: View {
                 vm.checkAlarmList()
             }
             .refreshable {
-                vm.loadAlarms()
                 print ("AlarmViewModel refreshed watchList = \(vm.alarmSet)")
+                vm.loadAlarms()
                 vm.checkAlarmList()
             }
             .navigationTitle(Text("Alarm View"))

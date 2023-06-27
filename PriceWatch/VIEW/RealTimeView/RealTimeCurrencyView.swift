@@ -120,7 +120,9 @@ struct RealTimeCurrencyView: View {
 
             }
             .onAppear{
-                vm.dm.load()
+                Task{
+                  await  vm.reload()
+                }
             }
         }
     }

@@ -23,13 +23,15 @@ class RealTimeCurrencyViewModel: ObservableObject {
     @Published var latestRealTimeUpdate: String = ""
 //    @Published var moneyEntered: Double = 1.0
     func reload() async{
+        
         loading = true
         if basedDollar == nil {
             basedDollar = .TWD
         }
         dm.baseDollar = basedDollar!
-        dm.load()
-        await dm.reload(fetchType: .realtime)
+        await dm.load(fetchType: .realtime)
+//        dm.loadFromMemory()
+//        await dm.reloadFromCloud(fetchType: .realtime)
         self.currencies = dm.rtCurrencies
         self.apiCurrencies = dm.apiCurrencies
         self.currency = dm.currency

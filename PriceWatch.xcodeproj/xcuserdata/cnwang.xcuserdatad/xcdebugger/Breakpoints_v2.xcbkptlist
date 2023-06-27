@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "172D9869-0CED-4923-B1C8-0C53DE92D37B"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "620D1B96-31CC-4A23-AD12-BCD7FF0517F2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PriceWatch/DataModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "reload()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7C1C9386-0C3F-4509-B597-5A2F86E3F8C3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PriceWatch/DataModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "reload()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7C1C9386-0C3F-4509-B597-5A2F86E3F8C3 - 5d85e524a1e69aba"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for PriceWatch.CurrencyModel.reload() async -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "704">
+               </Location>
+               <Location
+                  uuid = "7C1C9386-0C3F-4509-B597-5A2F86E3F8C3 - 2c0ec09ea63bd5a9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for PriceWatch.CurrencyModel.reload() async -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "7C1C9386-0C3F-4509-B597-5A2F86E3F8C3 - c9ed7f01143c70b8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for PriceWatch.CurrencyModel.reload() async -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "7C1C9386-0C3F-4509-B597-5A2F86E3F8C3 - ee804ded11fe7bbf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for PriceWatch.CurrencyModel.reload() async -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "32551791-8A21-4062-8A1F-25B61ABBB32B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PriceWatch/DataModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "reload()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6AC9681F-3DE3-4C05-8E5F-4BA017B1ABE2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PriceWatch/DataModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "reload()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EBA68753-B43A-4248-BFB1-082E6E57F17C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PriceWatch/MODEL/DataModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "reloadFromCloud(fetchType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F2D1E485-CD3B-4D05-9310-2DC147839D34"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PriceWatch/VIEWMODEL/RealTimeCurrencyViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "reload()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8C2111AC-E7C8-4B55-BA80-9961EBBCC9FA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PriceWatch/VIEWMODEL/RealTimeCurrencyViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "reload()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8C2111AC-E7C8-4B55-BA80-9961EBBCC9FA - 3c0d1cc96dc6a5e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for PriceWatch.RealTimeCurrencyViewModel.reload() async -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/VIEWMODEL/RealTimeCurrencyViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "1112">
+               </Location>
+               <Location
+                  uuid = "8C2111AC-E7C8-4B55-BA80-9961EBBCC9FA - 3c0d1cc96dc6a5e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for PriceWatch.RealTimeCurrencyViewModel.reload() async -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/VIEWMODEL/RealTimeCurrencyViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "1172">
+               </Location>
+               <Location
+                  uuid = "8C2111AC-E7C8-4B55-BA80-9961EBBCC9FA - 3c0d1cc96dc6a10"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for PriceWatch.RealTimeCurrencyViewModel.reload() async -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/VIEWMODEL/RealTimeCurrencyViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "716">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D088FD8D-E401-4DB1-9228-9539C52638F9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PriceWatch/MODEL/DataModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "parse(bdollar:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ABEB01F4-157D-447B-A8EF-3969497F4E31"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PriceWatch/MODEL/DataModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "parse(bdollar:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "82C1F4CD-4EA7-4264-8B8F-DB51E5C9AA07"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PriceWatch/MODEL/DataModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "parse(bdollar:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "82C1F4CD-4EA7-4264-8B8F-DB51E5C9AA07 - ed4af6f54437328b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PriceWatch.CurrencyModel.parse(bdollar: PriceWatch.Dollars) -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/MODEL/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "736">
+               </Location>
+               <Location
+                  uuid = "82C1F4CD-4EA7-4264-8B8F-DB51E5C9AA07 - ed4af6f54437326a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PriceWatch.CurrencyModel.parse(bdollar: PriceWatch.Dollars) -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/MODEL/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "128"
+                  endingLineNumber = "128"
+                  offsetFromSymbolStart = "560">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "52209B80-B160-4B9B-AD90-767D280CE1C3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PriceWatch/VIEWMODEL/RealTimeCurrencyViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "edit(CheckCurrency:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "52209B80-B160-4B9B-AD90-767D280CE1C3 - ad333718a49861fb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PriceWatch.RealTimeCurrencyViewModel.edit(CheckCurrency: PriceWatch.MyCurrencyModel) -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/VIEWMODEL/RealTimeCurrencyViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "188">
+               </Location>
+               <Location
+                  uuid = "52209B80-B160-4B9B-AD90-767D280CE1C3 - ad333718a49861d8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PriceWatch.RealTimeCurrencyViewModel.edit(CheckCurrency: PriceWatch.MyCurrencyModel) -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/VIEWMODEL/RealTimeCurrencyViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "188">
+               </Location>
+               <Location
+                  uuid = "52209B80-B160-4B9B-AD90-767D280CE1C3 - ad333718a4986196"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PriceWatch.RealTimeCurrencyViewModel.edit(CheckCurrency: PriceWatch.MyCurrencyModel) -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/VIEWMODEL/RealTimeCurrencyViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "188">
+               </Location>
+               <Location
+                  uuid = "52209B80-B160-4B9B-AD90-767D280CE1C3 - ad333718a4986135"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PriceWatch.RealTimeCurrencyViewModel.edit(CheckCurrency: PriceWatch.MyCurrencyModel) -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/VIEWMODEL/RealTimeCurrencyViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "188">
+               </Location>
+               <Location
+                  uuid = "52209B80-B160-4B9B-AD90-767D280CE1C3 - ad333718a4986135"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PriceWatch.RealTimeCurrencyViewModel.edit(CheckCurrency: PriceWatch.MyCurrencyModel) -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/VIEWMODEL/RealTimeCurrencyViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "208">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A20E54C4-CA1C-411F-ACFC-F367626D53C8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PriceWatch/VIEW/InputMoneyView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FBF6498B-FBA0-4DB0-B910-24628620D9CF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PriceWatch/VIEW/InputMoneyView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4B89F7AD-98E3-49E6-AB9A-AD194BDC7630"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PriceWatch/VIEW/RealTimeCurrencyView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "4B89F7AD-98E3-49E6-AB9A-AD194BDC7630 - cc93df1cb7e9105f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #2 (PriceWatch.MyCurrencyModel) -&gt; &lt;&lt;opaque return type of SwiftUI.View.onSubmit(of: SwiftUI.SubmitTriggers, _: () -&gt; ()) -&gt; some&gt;&gt;.0 in closure #2 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Text)&gt;&gt;, SwiftUI.List&lt;Swift.Never, SwiftUI.ForEach&lt;Swift.Array&lt;PriceWatch.MyCurrencyModel&gt;, Foundation.UUID, &lt;&lt;opaque return type of SwiftUI.View.onSubmit(of: SwiftUI.SubmitTriggers, _: () -&gt; ()) -&gt; some&gt;&gt;.0&gt;&gt;, SwiftUI.Spacer, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Text, &lt;&lt;opaque return type of SwiftUI.View.scaleEffect(_: CoreGraphics.CGFloat, anchor: SwiftUI.UnitPoint) -&gt; some&gt;&gt;.0)&gt;&gt;&gt;, SwiftUI.NavigationStack&lt;SwiftUI.NavigationPath, SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Text)&gt;&gt;, SwiftUI.List&lt;Swift.Never, SwiftUI.ForEach&lt;Swift.Array&lt;PriceWatch.MyCurrencyModel&gt;, Foundation.UUID, &lt;&lt;opaque return type of SwiftUI.View.onSubmit(of: SwiftUI.SubmitTriggers, _: () -&gt; ()) -&gt; some&gt;&gt;.0&gt;&gt;, SwiftUI.Spacer, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0)&gt;&gt;)&gt; in PriceWatch.RealTimeCurrencyView.body.getter : some"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/VIEW/RealTimeCurrencyView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "1352">
+               </Location>
+               <Location
+                  uuid = "4B89F7AD-98E3-49E6-AB9A-AD194BDC7630 - cc93df1cb7e910bc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #2 (PriceWatch.MyCurrencyModel) -&gt; &lt;&lt;opaque return type of SwiftUI.View.onSubmit(of: SwiftUI.SubmitTriggers, _: () -&gt; ()) -&gt; some&gt;&gt;.0 in closure #2 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Text)&gt;&gt;, SwiftUI.List&lt;Swift.Never, SwiftUI.ForEach&lt;Swift.Array&lt;PriceWatch.MyCurrencyModel&gt;, Foundation.UUID, &lt;&lt;opaque return type of SwiftUI.View.onSubmit(of: SwiftUI.SubmitTriggers, _: () -&gt; ()) -&gt; some&gt;&gt;.0&gt;&gt;, SwiftUI.Spacer, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Text, &lt;&lt;opaque return type of SwiftUI.View.scaleEffect(_: CoreGraphics.CGFloat, anchor: SwiftUI.UnitPoint) -&gt; some&gt;&gt;.0)&gt;&gt;&gt;, SwiftUI.NavigationStack&lt;SwiftUI.NavigationPath, SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Text)&gt;&gt;, SwiftUI.List&lt;Swift.Never, SwiftUI.ForEach&lt;Swift.Array&lt;PriceWatch.MyCurrencyModel&gt;, Foundation.UUID, &lt;&lt;opaque return type of SwiftUI.View.onSubmit(of: SwiftUI.SubmitTriggers, _: () -&gt; ()) -&gt; some&gt;&gt;.0&gt;&gt;, SwiftUI.Spacer, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0)&gt;&gt;)&gt; in PriceWatch.RealTimeCurrencyView.body.getter : some"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/VIEW/RealTimeCurrencyView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "1972">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "796CA32D-ECA0-4E94-8594-65F04302036E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PriceWatch/MODEL/DataModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "save()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "796CA32D-ECA0-4E94-8594-65F04302036E - a15ff89579b7c3d7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PriceWatch.CurrencyModel.save() -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/MODEL/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "172"
+                  endingLineNumber = "172"
+                  offsetFromSymbolStart = "284">
+               </Location>
+               <Location
+                  uuid = "796CA32D-ECA0-4E94-8594-65F04302036E - a15ff89579b7c3d7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PriceWatch.CurrencyModel.save() -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/MODEL/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "172"
+                  endingLineNumber = "172"
+                  offsetFromSymbolStart = "612">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B49FA576-A5EB-4767-851A-B6E7DC753CD3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PriceWatch/VIEW/AlarmView/AlarmView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B697D698-E85A-49E7-BD52-046FC3E71282"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PriceWatch/VIEWMODEL/AlarmViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "load()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8B2D3CF2-7F1A-4528-AA9C-0BA823F08F11"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PriceWatch/MODEL/DataModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "reloadFromCloud(fetchType:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8B2D3CF2-7F1A-4528-AA9C-0BA823F08F11 - e335746305be3cc6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for PriceWatch.CurrencyModel.reload(fetchType: PriceWatch.DataType) async -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/MODEL/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "1312">
+               </Location>
+               <Location
+                  uuid = "8B2D3CF2-7F1A-4528-AA9C-0BA823F08F11 - 1aa921cadf8978c4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for PriceWatch.CurrencyModel.reload(fetchType: PriceWatch.DataType) async -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/MODEL/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "1284">
+               </Location>
+               <Location
+                  uuid = "8B2D3CF2-7F1A-4528-AA9C-0BA823F08F11 - e335746305be3cc6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for PriceWatch.CurrencyModel.reload(fetchType: PriceWatch.DataType) async -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/MODEL/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "1344">
+               </Location>
+               <Location
+                  uuid = "8B2D3CF2-7F1A-4528-AA9C-0BA823F08F11 - 1aa921cadf8978c4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for PriceWatch.CurrencyModel.reload(fetchType: PriceWatch.DataType) async -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/MODEL/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "1316">
+               </Location>
+               <Location
+                  uuid = "8B2D3CF2-7F1A-4528-AA9C-0BA823F08F11 - 104d12b1915384ca"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for PriceWatch.CurrencyModel.reload(fetchType: PriceWatch.DataType) async -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/MODEL/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "184">
+               </Location>
+               <Location
+                  uuid = "8B2D3CF2-7F1A-4528-AA9C-0BA823F08F11 - e335746305be3cc6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for PriceWatch.CurrencyModel.reload(fetchType: PriceWatch.DataType) async -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/MODEL/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "1348">
+               </Location>
+               <Location
+                  uuid = "8B2D3CF2-7F1A-4528-AA9C-0BA823F08F11 - 1aa921cadf8978c4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for PriceWatch.CurrencyModel.reload(fetchType: PriceWatch.DataType) async -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/MODEL/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "1320">
+               </Location>
+               <Location
+                  uuid = "8B2D3CF2-7F1A-4528-AA9C-0BA823F08F11 - 104d12b1915384ca"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for PriceWatch.CurrencyModel.reload(fetchType: PriceWatch.DataType) async -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/MODEL/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "188">
+               </Location>
+               <Location
+                  uuid = "8B2D3CF2-7F1A-4528-AA9C-0BA823F08F11 - c6075e4393c8d1cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for PriceWatch.CurrencyModel.reloadFromCloud(fetchType: PriceWatch.DataType) async -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/MODEL/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "1348">
+               </Location>
+               <Location
+                  uuid = "8B2D3CF2-7F1A-4528-AA9C-0BA823F08F11 - 2030a65f15a315cf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for PriceWatch.CurrencyModel.reloadFromCloud(fetchType: PriceWatch.DataType) async -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/MODEL/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "1320">
+               </Location>
+               <Location
+                  uuid = "8B2D3CF2-7F1A-4528-AA9C-0BA823F08F11 - 822c09bcaf7a59c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for PriceWatch.CurrencyModel.reloadFromCloud(fetchType: PriceWatch.DataType) async -&gt; ()"
+                  moduleName = "PriceWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cnwang/Documents/swifty/PriceWatch/PriceWatch/MODEL/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "188">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
